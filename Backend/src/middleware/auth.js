@@ -11,6 +11,7 @@ const auth = (req, res, next) => {
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.ACCESS_SECRET);
+      // the line below decodes the encryption done by jwt
       req.decoded = decoded;
       next();
     } catch (error) {

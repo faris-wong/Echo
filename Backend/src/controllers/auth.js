@@ -47,11 +47,15 @@ const login = async (req, res) => {
     const claims = {
       email: auth.email,
     };
+
+    // jwt sign uses the claims and creates access secret with time that expires in 20minute
     const access = jwt.sign(claims, process.env.ACCESS_SECRET, {
       expiresIn: "20m",
+      // unique id assigned
       jwtid: uuidv4(),
     });
 
+    // jwt uses the claims to make a refresh secret that expires in 30 days
     const refresh = jwt.sign(claims, process.env.REFRESH_SECRET, {
       expiresIn: "30d",
       jwtid: uuidv4(),
