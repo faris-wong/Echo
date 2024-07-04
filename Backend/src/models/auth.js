@@ -1,12 +1,12 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-// const AuthSchema = new mongoose.Schema(
-//   {
-//     email: { type: String, require: true },
-//     hash: { type: String, require: true },
-//     created_at: { type: Date, default: Date.now },
-//   },
-//   { collection: "auth" }
-// );
+const AuthSchema = new mongoose.Schema(
+  {
+    email: { type: String, require: true },
+    hash: { type: String, require: true },
+    created_at: { type: Date, default: Date.now },
+  },
+  { collection: "auth" }
+);
 
-// module.exports = mongoose.model("Auth", AuthSchema);
+module.exports = mongoose.model("Auth", AuthSchema);
