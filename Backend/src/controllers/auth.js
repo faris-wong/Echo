@@ -1,11 +1,26 @@
-const Auth = require("../models/auth");
+const AuthModel = require("../models/Auth");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await AuthModel.find();
+
+    const outputArray = [];
+    for (const user of users) {
+      outputArray.push({ email: user.email, role: user.role });
+    }
+    res.json(outputArray);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({ status: "error", msg: "error getting users" });
+  }
+};
+
 const register = async (req, res) => {
   try {
-    const auth = await Auth.findOne({ email: req.body.email });
+    const auth = await AuthModel.findOne({ email: req.body.email });
     if (auth) {
       return res.status(400).json({ status: "error", msg: "duplicate email" });
     }
@@ -17,25 +32,27 @@ const register = async (req, res) => {
     // hashing makes individual characters of the string into more strings and sort them.
     const hash = await bcrypt.hash(req.body.password, 12);
 
-    await Auth.create({
+    await AuthModel.create({
       // create the new email body along with a hash of the password
       // note this is just a hash not the actual password
       email: req.body.email,
       hash,
+      // user role is default
+      role: req.body.role || "user",
     });
     res.json({ status: "ok", msg: "auth created" });
   } catch (error) {
     console.error(error.message);
-    res.json({ status: "error", msg: "unabale to make account" });
+    res.json({ status: "error", msg: "unable to make account" });
   }
 };
 
 const login = async (req, res) => {
   // account does not exist so it throws an error
   try {
-    const auth = await Auth.findOne({ email: req.body.email });
+    const auth = await AuthModel.findOne({ email: req.body.email });
     if (!auth) {
-      return res.status(400).json({ status: "error", msg: "not authorised" });
+      return res.status(401).json({ status: "error", msg: "not authorised" });
     }
     // comparison of the hashed password with the created hash.
     const result = await bcrypt.compare(req.body.password, auth.hash);
@@ -46,6 +63,7 @@ const login = async (req, res) => {
     // technically this is a payload
     const claims = {
       email: auth.email,
+      role: auth.role,
     };
 
     // jwt sign uses the claims and creates access secret with time that expires in 20minute
@@ -68,4 +86,24 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const refresh = async (req, res) => {
+  try {
+    // using decoded to verify
+    const decoded = jwt.verify(req.body.refresh, process.env.REFRESH_SECRET);
+    const claims = { email: decoded.email, role: decoded.role };
+
+    // claims is payload
+    // generating refresh token only
+    const refresh = jwt.sign(claims, process.env.ACCESS_SECRET, {
+      expiresIn: "20m",
+      jwtid: uuidv4(),
+    });
+
+    res.json({ refresh });
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({ status: "error", msg: "refresh error" });
+  }
+};
+
+module.exports = { register, login, getAllUsers, refresh };
