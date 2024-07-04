@@ -14,6 +14,7 @@ const register = async (req, res) => {
     // there is no way at this point in time to decrypt this
     // length of password is better than complexity, recommended 18 characters and above
     // one way hashing only. password then hash
+    // hashing makes individual characters of the string into more strings and sort them.
     const hash = await bcrypt.hash(req.body.password, 12);
 
     await Auth.create({
@@ -36,12 +37,13 @@ const login = async (req, res) => {
     if (!auth) {
       return res.status(400).json({ status: "error", msg: "not authorised" });
     }
-
+    // comparison of the hashed password with the created hash.
     const result = await bcrypt.compare(req.body.password, auth.hash);
     if (!result) {
       console.log("email or password error");
       return res.status(401).json({ status: "error", msg: "login failed" });
     }
+    // technically this is a payload
     const claims = {
       email: auth.email,
     };
