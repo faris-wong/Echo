@@ -1,3 +1,9 @@
+.window {
+  position: fixed;
+  bottom: 0;
+  margin: 10px;
+}
+
 .container {
   height: auto;
   width: 70vw;
