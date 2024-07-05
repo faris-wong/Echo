@@ -1,0 +1,27 @@
+.container {
+  height: auto;
+  width: 70vw;
+  background-color: rgb(36, 36, 36);
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+}
+
+.container input {
+  width: 97%;
+  background: none;
+  border: none;
+  color: white;
+  outline: none;
+}
+
+.sendBtn {
+  display: inline;
+  position: absolute;
+  right: 15px;
+}
+
+.sendBtn i {
+  cursor: pointer;
+}
