@@ -8,7 +8,7 @@ const MsgCard = () => {
         <i className="fa-solid fa-xmark"></i>
       </div>
       <div className={styles.updateBtn}>
-        <i class="fa-regular fa-pen-to-square"></i>
+        <i className="fa-regular fa-pen-to-square"></i>
       </div>
       <h4>User5391</h4>
       <span>online</span>
