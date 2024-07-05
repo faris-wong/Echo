@@ -8,16 +8,20 @@ const MsgCard = () => {
         <i className="fa-solid fa-xmark"></i>
       </div>
       <div className={styles.updateBtn}>
-      <i class="fa-regular fa-pen-to-square"></i>
+        <i className="fa-regular fa-pen-to-square"></i>
       </div>
       <h4>User5391</h4>
-      <span>12:00</span>
+      <span>online</span>
+      <span>03:30pm</span>
       <div className={styles.textBox}>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptas
-          a porro ab? Ut, voluptas iste accusantium repudiandae ipsum fuga
-          perspiciatis eveniet voluptatem laboriosam. Quae velit aut dicta vero
-          iste?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
+          molestiae. Ipsa eius id autem, vitae quas eum soluta sequi. Sint,
+          minus officiis dolores mollitia molestias eligendi illo laborum
+          debitis asperiores? Neque iure recusandae et earum tempore molestiae
+          ad officia aliquam, voluptates vel rerum sequi ullam quod officiis
+          saepe? Pariatur unde itaque alias architecto, maiores odio. Ullam
+          temporibus debitis veritatis vitae?
         </p>
       </div>
     </div>
