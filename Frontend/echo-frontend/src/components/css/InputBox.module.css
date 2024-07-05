@@ -1,12 +1,14 @@
 .window {
-  position: fixed;
   bottom: 0;
   margin: 10px;
+  width: 98%;
+  position: fixed;
 }
 
 .container {
   height: auto;
-  width: 70vw;
+  left: 50%;
+  transform: translate(-50%);
   background-color: rgb(36, 36, 36);
   border: 1px solid white;
   border-radius: 8px;
