@@ -57,7 +57,7 @@ const getProfileByInfo = async (req, res) => {
 const createProfile = async (req, res) => {
   try {
     const newProfile = {
-      username: req.body.name,
+      username: req.body.username,
     };
     const newProfileModel = new ProfileModel(newProfile);
     await newProfileModel.save();
