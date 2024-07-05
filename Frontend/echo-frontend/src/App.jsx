@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import ChatRoom from "./components/ChatRoom";
 
 const App = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <ChatRoom />
+    </>
   );
 };
 
