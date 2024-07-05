@@ -28,11 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 
 //put all api router routes here below the top line 20 to 24
 app.use("/auth", auth);
-<<<<<<< Updated upstream
 app.use("/profile", profile);
-=======
 app.use("/messages", Messages);
->>>>>>> Stashed changes
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
