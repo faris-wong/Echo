@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 
 const getAllUsers = async (req, res) => {
+  //
   try {
     const users = await AuthModel.find();
 
