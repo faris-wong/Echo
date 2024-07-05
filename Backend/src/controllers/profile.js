@@ -5,20 +5,20 @@ const seedProfile = async (req, res) => {
     await ProfileModel.deleteMany({});
     await ProfileModel.create([
       {
-        _id: "64d0f3f75676c304033d8c89",
+        _id: "6687bfaafaf865778c9605e2",
         username: "Ash",
-        email: "",
-        bio: "",
+        email: "ash@mail.com",
+        bio: "hi",
         status: "Online",
-        community: "",
+        community: "games",
       },
       {
-        _id: "64d0f3f75676c304033d8c89",
+        _id: "6687c021922a0938269aa6ea",
         username: "Vick",
-        email: "",
-        bio: "",
+        email: "vick.mail.com",
+        bio: "hello",
         status: "AFK",
-        community: "",
+        community: "games",
       },
     ]);
     res.json({ status: "ok", msg: "seeding successful" });
@@ -30,7 +30,7 @@ const seedProfile = async (req, res) => {
 
 const getAllProfiles = async (req, res) => {
   try {
-    const allProfiles = await ProfileModel.find().sort({ created_at: 1 });
+    const allProfiles = await ProfileModel.find();
     res.json(allProfiles);
   } catch (error) {
     console.error(error.message);

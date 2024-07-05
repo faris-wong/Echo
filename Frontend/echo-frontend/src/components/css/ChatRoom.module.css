@@ -1,0 +1,15 @@
+.header {
+  position: fixed;
+  top: 0;
+  padding: 10px;
+  z-index: 10;
+  background-color: rgb(28, 28, 28);
+  width: 100vw;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+.msgContainer {
+  margin-top: 6%;
+  margin-bottom: 5%;
+}
