@@ -1,4 +1,5 @@
 const ProfileModel = require("../models/Profile");
+const AuthModel = require("../models/Auth");
 
 const seedProfile = async (req, res) => {
   try {
@@ -56,8 +57,10 @@ const getProfileByInfo = async (req, res) => {
 
 const createProfile = async (req, res) => {
   try {
+    const profile = await AuthModel.findOne({ _id: req.params.id });
     const newProfile = {
       username: req.body.username,
+      email: profile._id,
     };
     const newProfileModel = new ProfileModel(newProfile);
     await newProfileModel.save();

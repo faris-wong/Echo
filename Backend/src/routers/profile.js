@@ -11,7 +11,7 @@ const {
 router.get("/seed", seedProfile);
 router.get("/profile", getAllProfiles);
 router.post("/profile", getProfileByInfo);
-router.put("/profile", createProfile);
+router.put("/profile/:id", createProfile);
 router.patch("/profile/:id", updateProfileById);
 
 module.exports = router;

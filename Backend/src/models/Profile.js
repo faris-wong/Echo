@@ -9,7 +9,7 @@ const ProfileSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    // email: { type: ObjectId, ref: "auth", require: true },
+    email: { type: ObjectId, ref: "auth", require: true },
     bio: { type: String, require: true, default: "", maxLength: 400 },
     status: {
       type: String,
