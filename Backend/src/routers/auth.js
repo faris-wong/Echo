@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  getAllUsers,
   register,
   login,
   refresh,
@@ -17,7 +16,7 @@ const {
 const checkErrors = require("../validators/checkErrors");
 const { authAdmin } = require("../middleware/auth");
 
-router.get("/users", authAdmin, getAllUsers);
+router.get("/users", authAdmin);
 router.put("/register", validateRegistrationData, checkErrors, register);
 router.post("/login", validateLoginData, checkErrors, login);
 router.post("/refresh", validateRefreshToken, checkErrors, refresh);
