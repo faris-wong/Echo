@@ -1,23 +1,22 @@
 const mongoose = require("mongoose");
+// const auth = require("./auth");
+// const community = require();
+const ObjectId = mongoose.Types.ObjectId;
 
 const ProfileSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      require: true,
-      default: { type: mongoose.Schema.Types.ObjectId, ref: "auth" },
-      unique: true,
     },
-    email: { type: mongoose.Schema.Types.ObjectId, ref: "auth" },
-    created_at: { type: mongoose.Schema.Types.ObjectId, ref: "auth" },
-    bio: { type: String, maxLength: 400 },
+    email: { type: ObjectId, ref: "auth", require: true },
+    bio: { type: String, require: true, default: "", maxLength: 400 },
     status: {
       type: String,
       enum: ["Online", "In-game", "AFK", "Offline"],
       require: true,
       default: "Online",
     },
-    community: { type: mongoose.Schema.Types.ObjectId, ref: "community" },
+    community: { type: ObjectId, ref: "community" },
   },
   { collection: "Profile" }
 );

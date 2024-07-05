@@ -8,10 +8,6 @@ const {
   updateProfileById,
 } = require("../controllers/profile");
 
-// const { checkBikeInputs } = require("../validators/bikes");
-// const { checkErrors } = require("../validators/checkErrors");
-// const { auth } = require("../middleware/auth");
-
 router.get("/seed", seedProfile);
 router.get("/profile", getAllProfiles);
 router.post("/profile", getProfileByInfo);
