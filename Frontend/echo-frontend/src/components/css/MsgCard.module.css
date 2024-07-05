@@ -13,7 +13,7 @@
 
 .cardContainer h4 {
   display: inline-block;
-  padding-right: 5px;
+  margin-right: 5px;
   font-weight: 600;
   color: white;
 }
@@ -24,6 +24,7 @@
 
 .cardContainer span {
     font-weight: 300;
+    margin-right: 5px;
 }
 
 .delBtn {

@@ -8,10 +8,11 @@ const MsgCard = () => {
         <i className="fa-solid fa-xmark"></i>
       </div>
       <div className={styles.updateBtn}>
-      <i class="fa-regular fa-pen-to-square"></i>
+        <i class="fa-regular fa-pen-to-square"></i>
       </div>
       <h4>User5391</h4>
-      <span>12:00</span>
+      <span>online</span>
+      <span>03:30pm</span>
       <div className={styles.textBox}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptas
