@@ -83,7 +83,7 @@ const login = async (req, res) => {
     res.json({ access, refresh });
   } catch (error) {
     console.error(error.message);
-    res.json({ status: "error", msg: "unabale to login" });
+    res.json({ status: "error", msg: "unable to login" });
   }
 };
 

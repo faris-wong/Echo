@@ -1,4 +1,5 @@
 const MessagesModel = require("../models/Messages");
+const ProfileModel = require("../models/Profile");
 
 const seedMessages = async (req, res) => {
   try {
@@ -6,7 +7,16 @@ const seedMessages = async (req, res) => {
 
     await MessagesModel.create([
       {
+        _id: "66881cf5fea2225a9a4278f8",
         message: "Hello friends",
+      },
+      {
+        _id: "66881cedfea2225a9a4278f6",
+        message: "Hello family",
+      },
+      {
+        _id: "66881a6afea2225a9a4278e5",
+        message: "Hello World",
       },
     ]);
 
@@ -19,7 +29,10 @@ const seedMessages = async (req, res) => {
 
 const getMessages = async (req, res) => {
   try {
-    const messages = await MessagesModel.find();
+    const allMessages = await ProfileModel.find().populate(
+      "profilelink",
+      "email"
+    );
     res.json(messages);
   } catch (error) {
     console.error(error.message);
@@ -29,8 +42,10 @@ const getMessages = async (req, res) => {
 
 const createMessages = async (req, res) => {
   try {
+    const message = await ProfileModel.findOne({ _id: req.params.id });
     const newMessage = {
       message: req.body.message,
+      profilelink: message._id,
     };
     await MessagesModel.create(newMessage);
     res.json({ status: "ok", msg: "Message created" });
