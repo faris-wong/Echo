@@ -10,7 +10,7 @@ const {
 
 router.get("/seedmessage", seedMessages);
 router.get("/message", getMessages);
-router.put("/message", createMessages);
+router.put("/message/:id", createMessages);
 router.patch("/message", updateMessages);
 router.delete("/message", deleteMessages);
 

@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const ProfileModel = require("../models/Profile");
 const AuthModel = require("../models/Auth");
 
-
 const seedProfile = async (req, res) => {
   try {
     await ProfileModel.deleteMany({});
@@ -14,7 +13,7 @@ const seedProfile = async (req, res) => {
 
         bio: "hi my name is",
         status: "Online",
-        community: "",
+        community: "Public",
       },
       {
         _id: "6687c021922a0938269aa6ea",
@@ -22,7 +21,7 @@ const seedProfile = async (req, res) => {
 
         bio: "hello friend",
         status: "AFK",
-        community: "",
+        community: "Public",
       },
       {
         _id: "66881e021de112745700a249",
@@ -30,7 +29,7 @@ const seedProfile = async (req, res) => {
 
         bio: "lfg",
         status: "In-game",
-        community: "",
+        community: "Public",
       },
     ]);
     res.json({ status: "ok", msg: "seeding successful" });
@@ -44,7 +43,7 @@ const getAllProfiles = async (req, res) => {
   try {
     const allProfiles = await ProfileModel.find().populate(
       "accountlink",
-      "username"
+      "email"
     );
     res.json(allProfiles);
   } catch (error) {

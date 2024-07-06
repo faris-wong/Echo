@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
-const ObjectId = mongoose.Types.ObjectId
+const ObjectId = mongoose.Types.ObjectId;
+const ProfileModel = require("../models/Profile");
 
 const MessagesSchema = new mongoose.Schema(
   {
     message: { type: String, require: false },
-    profilelink: { type: ObjectId, ref: "profile" },
-    community: {type: ObjectId, ref: "community"},
+    profilelink: { type: ObjectId, ref: "Profile", require: true },
+    community: { type: ObjectId, ref: "Community" },
     timeStamp: { type: Date, default: Date.now },
   },
   { collection: "messages" }

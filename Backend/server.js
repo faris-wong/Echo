@@ -6,9 +6,10 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const auth = require("./src/routers/auth");
 const profile = require("./src/routers/profile");
+const messages = require("./src/routers/messages");
 
 const connectDB = require("./src/database/database");
-const messages = require("./src/routers/messages");
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
