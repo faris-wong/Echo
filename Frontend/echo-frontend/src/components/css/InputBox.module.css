@@ -9,8 +9,8 @@
   height: auto;
   left: 50%;
   transform: translate(-50%);
-  background-color: rgb(36, 36, 36);
-  border: 1px solid white;
+  background-color: rgb(27, 27, 27);
+  border: 1px solid  rgb(139, 89, 255);
   border-radius: 8px;
   padding: 10px;
   position: relative;
@@ -32,4 +32,5 @@
 
 .sendBtn i {
   cursor: pointer;
+  color:   rgb(139, 89, 255);
 }

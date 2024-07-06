@@ -7,9 +7,12 @@ const ChatRoom = () => {
   return (
     <>
       <div className={styles.header}>
-        <h1>Community Chat</h1>
+        <h1>Indie Games Chatroom</h1>
       </div>
       <div className={styles.msgContainer}>
+        <MsgCard />
+        <MsgCard />
+        <MsgCard />
         <MsgCard />
         <MsgCard />
         <MsgCard />
