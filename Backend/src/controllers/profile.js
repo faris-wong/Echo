@@ -1,3 +1,5 @@
+const express = require("express");
+const mongoose = require("mongoose");
 const ProfileModel = require("../models/Profile");
 const AuthModel = require("../models/Auth");
 
@@ -8,18 +10,26 @@ const seedProfile = async (req, res) => {
       {
         _id: "6687bfaafaf865778c9605e2",
         username: "Ash",
-        email: "ash@mail.com",
-        bio: "hi",
+
+        bio: "hi my name is",
         status: "Online",
-        community: "games",
+        community: "Public",
       },
       {
         _id: "6687c021922a0938269aa6ea",
         username: "Vick",
-        email: "vick.mail.com",
-        bio: "hello",
+
+        bio: "hello friend",
         status: "AFK",
-        community: "games",
+        community: "Public",
+      },
+      {
+        _id: "66881e021de112745700a249",
+        username: "Chang Peng",
+
+        bio: "lfg",
+        status: "In-game",
+        community: "Public",
       },
     ]);
     res.json({ status: "ok", msg: "seeding successful" });
@@ -31,7 +41,10 @@ const seedProfile = async (req, res) => {
 
 const getAllProfiles = async (req, res) => {
   try {
-    const allProfiles = await ProfileModel.find();
+    const allProfiles = await ProfileModel.find().populate(
+      "accountlink",
+      "email"
+    );
     res.json(allProfiles);
   } catch (error) {
     console.error(error.message);
@@ -60,7 +73,7 @@ const createProfile = async (req, res) => {
     const profile = await AuthModel.findOne({ _id: req.params.id });
     const newProfile = {
       username: req.body.username,
-      email: profile._id,
+      accountlink: profile._id,
     };
     const newProfileModel = new ProfileModel(newProfile);
     await newProfileModel.save();
@@ -71,15 +84,15 @@ const createProfile = async (req, res) => {
   }
 };
 
-// const deleteAppointmentById = async (req, res) => {
-//   try {
-//     await AppointmentModel.findByIdAndDelete(req.params.id);
-//     res.json({ status: "ok", msg: "appointment deleted" });
-//   } catch (error) {
-//     console.error(error.message);
-//     res.json({ status: "error", msg: "error deleting appointment" });
-//   }
-// };
+const deleteProfileById = async (req, res) => {
+  try {
+    await ProfileModel.findByIdAndDelete(req.params.id);
+    res.json({ status: "ok", msg: "profile deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.json({ status: "error", msg: "error deleting profile" });
+  }
+};
 
 const updateProfileById = async (req, res) => {
   try {
@@ -102,5 +115,6 @@ module.exports = {
   getAllProfiles,
   getProfileByInfo,
   createProfile,
+  deleteProfileById,
   updateProfileById,
 };

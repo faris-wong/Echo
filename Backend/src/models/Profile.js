@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-// const auth = require("./auth");
-// const community = require();
 const ObjectId = mongoose.Types.ObjectId;
+const AuthModel = require("../models/Auth");
 
 const ProfileSchema = new mongoose.Schema(
   {
@@ -9,7 +8,7 @@ const ProfileSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    email: { type: ObjectId, ref: "auth", require: true },
+    accountlink: { type: ObjectId, ref: "Auth", require: true },
     bio: { type: String, require: true, default: "", maxLength: 400 },
     status: {
       type: String,
@@ -17,9 +16,9 @@ const ProfileSchema = new mongoose.Schema(
       require: true,
       default: "Online",
     },
-    community: { type: ObjectId, ref: "community" },
+    community: { type: String, require: false },
   },
-  { collection: "Profile" }
+  { collection: "profile" }
 );
 
 module.exports = mongoose.model("Profile", ProfileSchema);

@@ -8,7 +8,7 @@ const {
   seedMessages,
 } = require("../controllers/messages");
 
-router.get("/seed", seedMessages);
+router.get("/seedmessage", seedMessages);
 router.get("/message", getMessages);
 router.put("/message", createMessages);
 router.patch("/message", updateMessages);
