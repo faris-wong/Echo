@@ -1,5 +1,6 @@
 const MessagesModel = require("../models/Messages");
 const ProfileModel = require("../models/Profile");
+const CommunityModel = require("../models/Community");
 const AuthModel = require("../models/Auth");
 
 const seedMessages = async (req, res) => {
@@ -42,10 +43,9 @@ const seedMessages = async (req, res) => {
 
 const getMessages = async (req, res) => {
   try {
-    const allMessages = await MessagesModel.find().populate(
-      "profilelink",
-      "username"
-    );
+    const allMessages = await MessagesModel.find()
+      .populate("profilelink", "username")
+      .populate("communitylink", "communityname");
     res.json(allMessages);
   } catch (error) {
     console.error(error.message);
@@ -55,10 +55,14 @@ const getMessages = async (req, res) => {
 
 const createMessages = async (req, res) => {
   try {
-    const message = await ProfileModel.findOne({ _id: req.params.id });
+    const messageUser = await ProfileModel.findOne({ _id: req.body.chicken });
+    const messageInCommunity = await CommunityModel.findOne({
+      _id: req.body.duck,
+    });
     const newMessage = {
       message: req.body.message,
-      profilelink: message,
+      profilelink: messageUser,
+      communitylink: messageInCommunity,
     };
     await MessagesModel.create(newMessage);
     res.json({ status: "ok", msg: "Message created" });
