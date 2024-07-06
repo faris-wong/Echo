@@ -53,6 +53,22 @@ const getMessages = async (req, res) => {
   }
 };
 
+const getMessageByCommunity = async (req, res) => {
+  const allMessages = await MessagesModel.find()
+    .populate("profilelink", "username")
+    .populate("communitylink", "communityname");
+  const CommunityInfo = {};
+  if (req.body?.id) CommunityInfo.communitylink = req.body.id;
+
+  try {
+    const allMessages = await MessagesModel.find(CommunityInfo);
+    res.json(allMessages);
+  } catch (error) {
+    console.error(error.message);
+    res.json({ status: "error", msg: "error fetching community message" });
+  }
+};
+
 const createMessages = async (req, res) => {
   try {
     const messageUser = await ProfileModel.findOne({ _id: req.body.chicken });
@@ -97,6 +113,7 @@ const deleteMessages = async (req, res) => {
 
 module.exports = {
   getMessages,
+  getMessageByCommunity,
   createMessages,
   updateMessages,
   deleteMessages,
