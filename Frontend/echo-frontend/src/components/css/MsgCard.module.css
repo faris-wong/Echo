@@ -1,5 +1,4 @@
 .cardContainer {
-  background-color: rgb(49, 49, 49);
   color: rgb(214, 214, 214);
   width: 98%;
   height: auto;
@@ -7,9 +6,24 @@
   padding: 15px;
   position: relative;
   margin: 10px;
+  box-shadow: 3px 3px 5px rgba(13, 13, 13, 0.6);
 }
 
-
+.status {
+  display: inline-block;
+  font-weight: 300;
+  font-size: 14px;
+  padding-left: 7px;
+  padding-right: 7px;
+  text-align: center;
+  background-color: rgb(255, 89, 227);
+  color: black;
+  width: auto;
+  height: 20px;
+  border-radius: 20px;
+  line-height: 20px;
+  text-align: center;
+}
 
 .cardContainer h4 {
   display: inline-block;
@@ -22,11 +36,6 @@
   display: inline;
 }
 
-.cardContainer span {
-    font-weight: 300;
-    margin-right: 5px;
-}
-
 .delBtn {
   position: absolute;
   right: 8px;
@@ -34,7 +43,7 @@
 }
 
 .delBtn i {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .updateBtn {
@@ -44,5 +53,12 @@
 }
 
 .updateBtn i {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.timeStamp {
+  position: absolute;
+  right: 55px;
+  top: 8px;
+  font-size: 12px;
 }

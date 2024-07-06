@@ -10,9 +10,11 @@ const MsgCard = () => {
       <div className={styles.updateBtn}>
         <i className="fa-regular fa-pen-to-square"></i>
       </div>
-      <h4>User5391</h4>
-      <span>online</span>
+      <div className={styles.timeStamp}>
       <span>03:30pm</span>
+      </div>
+      <h4>User5391</h4>
+      <span className={styles.status}>online</span>
       <div className={styles.textBox}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
