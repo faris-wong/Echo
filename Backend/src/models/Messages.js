@@ -6,7 +6,7 @@ const MessagesSchema = new mongoose.Schema(
   {
     message: { type: String, require: false },
     profilelink: { type: ObjectId, ref: "Profile", require: true },
-    community: { type: ObjectId, ref: "Community" },
+    community: { type: ObjectId, ref: "Community", require: true },
     timeStamp: { type: Date, default: Date.now },
   },
   { collection: "messages" }

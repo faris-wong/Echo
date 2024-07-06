@@ -44,7 +44,7 @@ const getMessages = async (req, res) => {
   try {
     const allMessages = await MessagesModel.find().populate(
       "profilelink",
-      "username community"
+      "username"
     );
     res.json(allMessages);
   } catch (error) {
