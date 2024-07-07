@@ -16,3 +16,8 @@ body {
   background-color: rgb(27, 27, 27);
   color: rgb(214, 214, 214);
 }
+
+.content {
+  margin-left: 200px; /* no matter what we change in our navbar css make sure this matches the navbar width */
+  padding: 20px;
+}

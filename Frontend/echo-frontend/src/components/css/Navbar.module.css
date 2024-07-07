@@ -1,0 +1,87 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  background-color: black;
+  padding: 1rem;
+}
+
+nav .title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.navlist {
+  display: flex;
+  flex-direction: column;
+}
+
+.communitiesList {
+  margin-top: 2rem;
+}
+
+.profile {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile a:hover {
+  background-color: grey;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.profileContainer {
+  display: flex;
+  align-items: center;
+}
+
+.userIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 1rem;
+  margin-right: 1.5rem;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-size: 1rem;
+  margin: 0;
+  color: white;
+}
+
+.status {
+  font-size: 0.75rem;
+  margin: 0;
+  color: white;
+  font-style: italic;
+  font-weight: 100;
+}
+
+li a {
+  color: white;
+}
