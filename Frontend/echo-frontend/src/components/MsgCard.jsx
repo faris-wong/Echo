@@ -2,6 +2,15 @@ import React from "react";
 import styles from "./css/MsgCard.module.css";
 
 const MsgCard = (props) => {
+  const formatTime = (date) => {
+    const parsedDate = new Date(date);
+    return parsedDate.toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true });
+  };
+
+  const formatDate = (date) => {
+    const parsedDate = new Date(date);
+    return parsedDate.toLocaleDateString('en-GB');
+  };
 
   return (
     <div className={styles.cardContainer}>
@@ -12,7 +21,7 @@ const MsgCard = (props) => {
         <i className="fa-regular fa-pen-to-square"></i>
       </div>
       <div className={styles.timeStamp}>
-      <span>{props.timeStamp}</span>
+      <span>{`${formatDate(props.timeStamp)} | ${formatTime(props.timeStamp)}`}</span>
       </div>
       <h4>User5391</h4>
       <span className={styles.status}>online</span>
