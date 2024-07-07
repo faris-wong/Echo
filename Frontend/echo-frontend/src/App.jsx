@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        {/* <ChatRoom /> */}
+        <ChatRoom />
         <ProfilePage />
       </QueryClientProvider>
     </>
