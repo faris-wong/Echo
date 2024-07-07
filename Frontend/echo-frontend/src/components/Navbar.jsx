@@ -9,7 +9,7 @@ const Navbar = () => {
         ECHO
       </NavLink>
       <ul className={styles.navlist}>
-        <li>
+        <li className={styles.home}>
           <NavLink to="/Home">HOME</NavLink>
         </li>
         <li>
@@ -19,7 +19,7 @@ const Navbar = () => {
         </li>
         <li className={styles.profile}>
           <NavLink to="/Profile">
-            <div class={styles.profileContainer}>
+            <div className={styles.profileContainer}>
               <img
                 src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100269.jpg?t=st=1720277317~exp=1720280917~hmac=131407d0cd2c4d6d0cd313ee799bb259e9d8255230e789861a0a31f571eb9f8a&w=826"
                 className={styles.userIcon}
