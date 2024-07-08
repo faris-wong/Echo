@@ -20,4 +20,12 @@
   overflow: hidden;
   border-radius: 20px;
   padding: 20px;
+  /* text-align: center; */
+}
+
+.delBtn {
+  position: absolute;
+  right: 11.5px;
+  top: 3.5px;
+  cursor: pointer;
 }

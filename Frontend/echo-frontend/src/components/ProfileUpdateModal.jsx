@@ -21,7 +21,17 @@ const Overlay = (props) => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <h1>Helloooooo</h1>
+        <div className={styles.delBtn}>
+          <i
+            className="fa-solid fa-xmark"
+            onClick={() => props.setShowUpdateModal(false)}
+          ></i>
+        </div>
+        <h1>Update Profile</h1>
+        <div>
+            <p>username: </p>
+            <input type="text" />
+        </div>
       </div>
     </div>
   );
@@ -36,6 +46,7 @@ const ProfileUpdateModal = (props) => {
           bio={props.bio}
           status={props.status}
           community={props.community}
+          username={props.username}
           setShowUpdateModal={props.setShowUpdateModal}
         />,
         document.querySelector("#root")
