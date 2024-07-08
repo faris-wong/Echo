@@ -29,7 +29,8 @@ const App = () => {
             <Route path="Home" element={<Newsfeed />} />
             <Route
               path="community/:communityId"
-              element={<ChatRoom communityID={communityID} />}
+              element={<ChatRoom communityID={communityID} profileID={profileID} />}
+
             />
 
             <Route
@@ -46,7 +47,10 @@ const App = () => {
             <Login setShowLogin={setShowLogin} setProfileID={setProfileID} />
           )}
           {!accessToken && !showLogin && (
-            <Register setShowLogin={setShowLogin} />
+            <Register
+              setShowCreateProfile={setShowCreateProfile}
+              setShowLogin={setShowLogin}
+            />
           )}
           {accessToken && <ChatRoom />}
         </UserContext.Provider>
