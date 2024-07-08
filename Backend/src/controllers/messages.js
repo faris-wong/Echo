@@ -71,9 +71,9 @@ const getMessageByCommunity = async (req, res) => {
 
 const createMessages = async (req, res) => {
   try {
-    const messageUser = await ProfileModel.findOne({ _id: req.body.chicken });
+    const messageUser = await ProfileModel.findOne({ _id: req.body.profile });
     const messageInCommunity = await CommunityModel.findOne({
-      _id: req.body.duck,
+      _id: req.body.community,
     });
     const newMessage = {
       message: req.body.message,
