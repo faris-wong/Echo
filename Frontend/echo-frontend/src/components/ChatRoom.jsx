@@ -7,12 +7,11 @@ import useFetchNT from "../hooks/useFetchNT";
 
 import { useParams } from "react-router-dom";
 
-
 const ChatRoom = (props) => {
   const queryClient = useQueryClient();
   const usingFetch = useFetchNT();
   const params = useParams();
-
+  props.setCommunityID(params._id);
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs"],
