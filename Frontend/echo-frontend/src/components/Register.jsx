@@ -8,10 +8,7 @@ const Register = (props) => {
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
   const [confirmPW, setConfirmPW] = useState("");
-  const [bio, setBio] = useState("");
-  const [communities, setCommunities] = useState("");
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["echo"], // fill whatever necessary here
@@ -28,6 +25,20 @@ const Register = (props) => {
     },
     onSuccess: () => props.setShowLogin(true),
   });
+
+  const { mutate2 } = useMutation({
+    mutationFn: async () => {
+      await usingFetch("/profile/:id", "PUT", {
+        username,
+        accountlink,
+        bio,
+        status,
+        community,
+      });
+    },
+    onSuccess: () => console.log("hello"),
+  });
+
   return (
     <>
       <div className="row">
