@@ -26,7 +26,9 @@ const CreatingProfile = (props) => {
 
   return (
     <>
-      <div className="row">
+      <div>hello</div>
+      <div>{JSON.stringify(props.setId)}</div>
+      {/* <div className="row">
         <div className="col-md-3">
           <input
             type="text"
@@ -36,7 +38,7 @@ const CreatingProfile = (props) => {
             onChange={(e) => setUsername(e.target.value)}
           ></input>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
