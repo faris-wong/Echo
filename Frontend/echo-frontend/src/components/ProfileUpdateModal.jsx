@@ -1,6 +1,8 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import useFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import styles from "./css/ProfileUpdateModal.module.css";
 
 const Overlay = (props) => {
   const usingFetch = useFetchNT();
@@ -16,6 +18,13 @@ const Overlay = (props) => {
         props.setShowUpdateModal(false);
     },
   });
+  return (
+    <div className={styles.backdrop}>
+      <div className={styles.modal}>
+        <h1>Helloooooo</h1>
+      </div>
+    </div>
+  );
 };
 
 const ProfileUpdateModal = (props) => {

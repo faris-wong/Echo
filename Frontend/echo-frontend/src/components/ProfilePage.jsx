@@ -54,7 +54,7 @@ const ProfilePage = (props) => {
           <div className={styles.updateGameBtn}>
             <i
               className="fa-regular fa-pen-to-square"
-              onClick={setShowUpdateModal(true)}
+              onClick={() => setShowUpdateModal(true)}
             ></i>
           </div>
         </div>
