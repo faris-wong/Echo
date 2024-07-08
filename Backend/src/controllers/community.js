@@ -35,6 +35,15 @@ const getAllCommunities = async (req, res) => {
   }
 };
 
+const getCommunityById = async (req, res) => {
+  try {
+    const allCommunities = await CommunityModel.findById(req.body.id);
+    res.json(allCommunities);
+  } catch (error) {
+    res.json({ status: error, msg: "error getting communities" });
+  }
+};
+
 const createCommunity = async (req, res) => {
   try {
     const newCommunity = new CommunityModel({
@@ -76,6 +85,7 @@ const updateCommunityById = async (req, res) => {
 module.exports = {
   seedCommunity,
   getAllCommunities,
+  getCommunityById,
   createCommunity,
   deleteCommunityById,
   updateCommunityById,

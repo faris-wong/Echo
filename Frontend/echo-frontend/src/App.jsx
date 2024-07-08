@@ -1,5 +1,5 @@
 import React from "react";
-import ChatRoom from "./components/ChatRoom";
+import Community from "./components/Community";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import UserContext from "./context/user";
@@ -30,7 +30,7 @@ const App = () => {
             <Route
               path="community/:communityID"
               element={
-                <ChatRoom communityID={communityID} profileID={profileID} />
+                <Community communityID={communityID} profileID={profileID} />
               }
             />
 

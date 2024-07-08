@@ -18,8 +18,8 @@ const InputBox = (props) => {
     mutationFn: async () =>
       await usingFetch("/message", "PUT", {
         message: messageText,
-        // profile: props.profileID,
-        // community: props.communityID,
+        // profile: props.profileID, Waiting for captain ChangPeng
+        community: props.communityID,
       }),
     onSuccess: () => {
       setMessageText("");
