@@ -42,8 +42,9 @@ const Navbar = () => {
           <ul>
             {communitiesList.map((community) => {
               const toVar = "/community/" + community._id;
+
               return (
-                <li key={community.id}>
+                <li key={community._id}>
                   <NavLink to={toVar}>{community.communityname}</NavLink>
                 </li>
               );

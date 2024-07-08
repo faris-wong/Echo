@@ -4,14 +4,12 @@ import InputBox from "./InputBox";
 import styles from "./css/ChatRoom.module.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useFetchNT from "../hooks/useFetchNT";
-
 import { useParams } from "react-router-dom";
 
 const ChatRoom = (props) => {
   const queryClient = useQueryClient();
   const usingFetch = useFetchNT();
   const params = useParams();
-  props.setCommunityID(params._id);
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs"],
@@ -25,7 +23,10 @@ const ChatRoom = (props) => {
       </div>
       <div className={styles.msgContainer}></div>
       <div>
-        <InputBox communityID={props.communityID} profileID={props.profileID} />
+        <InputBox
+          communityID={params.communityID}
+          profileID={props.profileID}
+        />
       </div>
       {isFetching && <h1>Loading...</h1>}
 

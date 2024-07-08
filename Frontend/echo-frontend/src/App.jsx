@@ -23,12 +23,12 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Navbar setCommunityID={setCommunityID} />
+        <Navbar />
         <div className="content">
           <Routes>
             <Route path="Home" element={<Newsfeed />} />
             <Route
-              path="community/:communityId"
+              path="community/:communityID"
               element={
                 <ChatRoom communityID={communityID} profileID={profileID} />
               }
