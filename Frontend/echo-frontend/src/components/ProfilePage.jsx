@@ -43,16 +43,15 @@ const ProfilePage = () => {
         <span className={styles.status}>{profile.status}</span>
       </div>
       <div className={styles.gamesBio}>
-        <h2>{profile.bio}</h2>
+        <h2>Bio</h2>
+        <div>{profile.bio}</div>
         <div className={styles.updateGameBtn}>
           <i className="fa-regular fa-pen-to-square"></i>
         </div>
       </div>
       <div className={styles.commBio}>
         <h2>Your Communities</h2>
-        <ul>
-          <li>Indie Games</li>
-        </ul>
+       <div>{profile.communities}</div>
       </div>
     </div>
   );
