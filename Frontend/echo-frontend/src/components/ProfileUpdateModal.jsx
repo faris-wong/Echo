@@ -1,6 +1,6 @@
 import React from "react";
 import useFetchNT from "../hooks/useFetchNT";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const Overlay = (props) => {
   const usingFetch = useFetchNT();
