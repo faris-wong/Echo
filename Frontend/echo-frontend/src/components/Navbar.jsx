@@ -40,11 +40,14 @@ const Navbar = () => {
         <li>
           <div className={styles.communitiesList}> COMMUNITIES </div>
           <ul>
-            {communitiesList.map((community) => (
-              <li key={community.id}>
-                <NavLink to="/Community">{community.communityname}</NavLink>
-              </li>
-            ))}
+            {communitiesList.map((community) => {
+              const toVar = "/community/" + community._id;
+              return (
+                <li key={community.id}>
+                  <NavLink to={toVar}>{community.communityname}</NavLink>
+                </li>
+              );
+            })}
           </ul>
         </li>
         <li className={styles.profile}>
