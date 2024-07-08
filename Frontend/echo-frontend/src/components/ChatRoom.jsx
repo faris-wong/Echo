@@ -7,7 +7,7 @@ import useFetchNT from "../hooks/useFetchNT";
 
 const ChatRoom = () => {
   const queryClient = useQueryClient();
-  const usingFetch = useFetchNT()
+  const usingFetch = useFetchNT();
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs"],
@@ -16,10 +16,9 @@ const ChatRoom = () => {
 
   return (
     <>
-    {JSON.stringify(data)}
-      {/* <div className={styles.header}>
+      <div className={styles.header}>
         <h1>Indie Games Chatroom</h1>
-      </div> */}
+      </div>
       <div className={styles.msgContainer}></div>
       <div>
         <InputBox />
