@@ -4,6 +4,7 @@ const {
   seedProfile,
   getAllProfiles,
   getProfileByInfo,
+  getProfileById,
   createProfile,
   deleteProfileById,
   updateProfileById,
@@ -11,7 +12,7 @@ const {
 
 router.get("/seed", seedProfile);
 router.get("/profile", getAllProfiles);
-router.post("/profile", getProfileByInfo);
+router.post("/profile", getProfileById);
 router.put("/profile/:id", createProfile);
 router.delete("/profile/:id", deleteProfileById);
 router.patch("/profile/:id", updateProfileById);

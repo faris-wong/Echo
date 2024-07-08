@@ -68,6 +68,16 @@ const getProfileByInfo = async (req, res) => {
   }
 };
 
+const getProfileById = async (req, res) => {
+  try {
+    const profile = await ProfileModel.findById(req.body.id);
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.json({ status: "error", msg: "error fetching profiles" });
+  }
+};
+
 const createProfile = async (req, res) => {
   try {
     const profile = await AuthModel.findOne({ _id: req.params.id });
@@ -114,6 +124,7 @@ module.exports = {
   seedProfile,
   getAllProfiles,
   getProfileByInfo,
+  getProfileById,
   createProfile,
   deleteProfileById,
   updateProfileById,
