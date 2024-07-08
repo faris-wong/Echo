@@ -3,32 +3,23 @@ import MsgCard from "./MsgCard";
 import InputBox from "./InputBox";
 import styles from "./css/ChatRoom.module.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import UseFetch from "../hooks/useFetch";
+import useFetchNT from "../hooks/useFetchNT";
 
 const ChatRoom = () => {
   const queryClient = useQueryClient();
-  const usingFetch = UseFetch();
+  const usingFetch = useFetchNT()
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs"],
     queryFn: async () => await usingFetch("/message", undefined, undefined),
   });
 
-  // const mutation = useMutation({
-  //   mutationFn: async () =>
-  //     await usingFetch("/messagebycommunity", "POST", { id }),
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries(["msgs"]);
-  //   },
-  // });
-  // mutation.mutate
-
   return (
     <>
-    
-      <div className={styles.header}>
+    {JSON.stringify(data)}
+      {/* <div className={styles.header}>
         <h1>Indie Games Chatroom</h1>
-      </div>
+      </div> */}
       <div className={styles.msgContainer}></div>
       <div>
         <InputBox />
@@ -43,7 +34,7 @@ const ChatRoom = () => {
             <MsgCard
               key={item._id}
               id={item._id}
-              username={item.profilelink.username}
+              // username={item.profilelink.username}
               message={item.message}
               timeStamp={item.timeStamp}
             />
