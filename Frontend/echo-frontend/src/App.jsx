@@ -29,13 +29,16 @@ const App = () => {
             <Route path="Home" element={<Newsfeed />} />
             <Route
               path="community/:communityId"
-              element={<ChatRoom communityID={communityID} profileID={profileID} />}
-
+              element={
+                <ChatRoom communityID={communityID} profileID={profileID} />
+              }
             />
 
             <Route
               path="Profile"
-              element={<ProfilePage communityId={communityId} profileID={profileID} />}
+              element={
+                <ProfilePage communityId={communityID} profileID={profileID} />
+              }
             />
           </Routes>
         </div>
