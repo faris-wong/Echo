@@ -16,23 +16,33 @@ const App = () => {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState("");
   const [showLogin, setShowLogin] = useState(true);
+  const [profileID, setProfileID] = useState("");
+  const [communityID, setCommunityID] = useState("");
 
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Navbar />
+        <Navbar setCommunityID={setCommunityID} />
         <div className="content">
           <Routes>
             <Route path="Home" element={<Newsfeed />} />
-            <Route path="Community" element={<ChatRoom />} />
-            <Route path="Profile" element={<ProfilePage />} />
+            <Route
+              path="Community"
+              element={<ChatRoom communityID={communityID} />}
+            />
+            <Route
+              path="Profile"
+              element={<ProfilePage profileID={profileID} />}
+            />
           </Routes>
         </div>
         <UserContext.Provider
           value={{ accessToken, setAccessToken, role, setRole }}
         >
           {/* using accesstoken to set display if accesstoken is true it will display, basically needs login */}
-          {!accessToken && showLogin && <Login setShowLogin={setShowLogin} />}
+          {!accessToken && showLogin && (
+            <Login setShowLogin={setShowLogin} setProfileID={setProfileID} />
+          )}
           {!accessToken && !showLogin && (
             <Register setShowLogin={setShowLogin} />
           )}

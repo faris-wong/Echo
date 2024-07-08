@@ -44,7 +44,7 @@ const seedMessages = async (req, res) => {
 const getMessages = async (req, res) => {
   try {
     const allMessages = await MessagesModel.find()
-      .populate("profilelink", "username bio")
+      .populate("profilelink", "username")
       .populate("communitylink", "communityname");
     res.json(allMessages);
   } catch (error) {

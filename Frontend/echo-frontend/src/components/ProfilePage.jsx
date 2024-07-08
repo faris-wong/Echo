@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./css/ProfilePage.module.css";
 import { useState, useEffect } from "react";
 
-const ProfilePage = () => {
+const ProfilePage = (props) => {
   const [profile, setProfile] = useState("");
 
-  const getProfile = async () => {
+  const getProfileByID = async () => {
     try {
       const response = await fetch(import.meta.env.VITE_SERVER + "/profile", {
         method: "POST",
@@ -13,7 +13,7 @@ const ProfilePage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: "668b36e5bae7ec96ee7249a7",
+          id: props.profileID,
         }),
       });
       if (!response.ok) {
@@ -27,7 +27,7 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    getProfile();
+    getProfileByID();
   }, []);
   return (
     <div className={styles.pageContainer}>
