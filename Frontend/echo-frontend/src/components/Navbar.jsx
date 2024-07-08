@@ -1,8 +1,33 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import styles from "./css/Navbar.module.css";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [communitiesList, setCommunitiesList] = useState([]);
+
+  const getCommunities = async () => {
+    try {
+      const response = await fetch(import.meta.env.VITE_SERVER + "/community", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("fetch error");
+      }
+      const communitydata = await response.json();
+      setCommunitiesList(communitydata);
+      console.log(communitydata);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getCommunities();
+  }, []);
+
   return (
     <nav>
       <NavLink to="/" className={styles.title}>
@@ -14,8 +39,13 @@ const Navbar = () => {
         </li>
         <li>
           <div className={styles.communitiesList}> COMMUNITIES </div>
-
-          <NavLink to="/Community">Indie</NavLink>
+          <ul>
+            {communitiesList.map((community) => (
+              <li key={community.id}>
+                <NavLink to="/Community">{community.communityname}</NavLink>
+              </li>
+            ))}
+          </ul>
         </li>
         <li className={styles.profile}>
           <NavLink to="/Profile">
