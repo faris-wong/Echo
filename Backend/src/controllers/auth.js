@@ -33,7 +33,7 @@ const register = async (req, res) => {
     // hashing makes individual characters of the string into more strings and sort them.
     const hash = await bcrypt.hash(req.body.password, 12);
 
-    await AuthModel.create({
+    const createdAuth = await AuthModel.create({
       // create the new email body along with a hash of the password
       // note this is just a hash not the actual password
       email: req.body.email,
@@ -41,7 +41,7 @@ const register = async (req, res) => {
       // user role is default
       role: req.body.role || "user",
     });
-    res.json({ status: "ok", msg: "auth created" });
+    res.json({ id: createdAuth._id });
   } catch (error) {
     console.error(error.message);
     res.json({ status: "error", msg: "unable to make account" });
