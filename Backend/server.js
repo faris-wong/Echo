@@ -8,6 +8,7 @@ const auth = require("./src/routers/auth");
 const profile = require("./src/routers/profile");
 const messages = require("./src/routers/messages");
 const community = require("./src/routers/community");
+const roles = require("./src/routers/roles");
 
 const connectDB = require("./src/database/database");
 
@@ -29,7 +30,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //put all api router routes here below the top line 20 to 24
-app.use("/", auth, profile, messages, community);
+app.use("/", profile, messages, community, roles);
+app.use("/auth", auth);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {

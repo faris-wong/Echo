@@ -23,7 +23,6 @@ const Register = (props) => {
       await usingFetch("/auth/register", "PUT", {
         email,
         password,
-        username,
         role,
       });
     },

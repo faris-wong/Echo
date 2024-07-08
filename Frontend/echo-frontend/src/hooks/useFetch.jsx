@@ -1,22 +1,23 @@
-import React from "react";
-
-const UseFetch = () => {
-  const fetchData = async (endpoint, method, body) => {
+const useFetch = () => {
+  const fetchData = async (endpoint, method, body, token) => {
     const res = await fetch(import.meta.env.VITE_SERVER + endpoint, {
       method,
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify(body),
     });
 
     if (!res.ok) {
-        throw new Error("database error");
-      }
-  
-      return await res.json();
+      throw new Error({ status: res.status, msg: "database error" });
+    }
+
+    const resData = await res.json();
+    return resData;
   };
-  return fetchData
+
+  return fetchData;
 };
 
-export default UseFetch;
+export default useFetch;

@@ -5,9 +5,9 @@ const validateRegistrationData = [
   body("password", "password is required").notEmpty().isString(),
   body(
     "password",
-    "password length min is 12 and max is 30 characters"
+    "password length min is 8 and max is 30 characters"
   ).isLength({
-    min: 12,
+    min: 8,
     max: 30,
   }),
 ];

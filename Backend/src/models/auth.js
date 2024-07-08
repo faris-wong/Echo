@@ -6,7 +6,7 @@ const AuthSchema = new mongoose.Schema(
     hash: { type: String, require: true },
     role: { type: String, default: "user", enum: ["user", "admin"] },
     created_at: { type: Date, default: Date.now },
-  },
+  },  
   { collection: "auth" }
 );
 
