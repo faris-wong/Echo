@@ -1,7 +1,34 @@
 import React from "react";
 import styles from "./css/ProfilePage.module.css";
+import { useState, useEffect } from "react";
 
 const ProfilePage = () => {
+  const [profile, setProfile] = useState("");
+
+  const getProfile = async () => {
+    try {
+      const response = await fetch(import.meta.env.VITE_SERVER + "/profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: "668b36e5bae7ec96ee7249a7",
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("fetch error");
+      }
+      const profiledata = await response.json();
+      setProfile(profiledata);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getProfile();
+  }, []);
   return (
     <div className={styles.pageContainer}>
       <div className={styles.bio}>
@@ -11,23 +38,15 @@ const ProfilePage = () => {
         />
 
         <h1>
-          Hey, <span className={styles.userName}>User1234.</span>
+          Hey, <span className={styles.userName}>{profile.username}</span>
         </h1>
-        <span className={styles.status}>online</span>
+        <span className={styles.status}>{profile.status}</span>
       </div>
       <div className={styles.gamesBio}>
-        <h2>Games Played</h2>
+        <h2>{profile.bio}</h2>
         <div className={styles.updateGameBtn}>
           <i className="fa-regular fa-pen-to-square"></i>
         </div>
-        <ul>
-          <li>Stardew Valley</li>
-          <li>Red Dead Redemption 2</li>
-          <li>Persona 5</li>
-          <li>Fran Bow</li>
-          <li>Detroit: Become Human</li>
-          <li>Baldur's Gate 3</li>
-        </ul>
       </div>
       <div className={styles.commBio}>
         <h2>Your Communities</h2>
