@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import styles from "./css/Navbar.module.css";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [communitiesList, setCommunitiesList] = useState([]);
 
   const getCommunities = async () => {
