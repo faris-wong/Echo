@@ -3,7 +3,7 @@ import { useState } from "react";
 import UseFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-const CreatingProfile = () => {
+const CreatingProfile = (props) => {
   const usingFetch = UseFetchNT();
   const [username, setUsername] = useState("");
 
@@ -14,14 +14,31 @@ const CreatingProfile = () => {
 
   const { mutate } = useMutation({
     mutationFn: async (props) => {
-      await usingFetch(`/profile + ${props.id}`, "PUT", {
+      await usingFetch("/profile/" + props.id, "PUT", {
         username,
       });
     },
-    onSuccess: () => props.setShowLogin(true),
+    onSuccess: () => {
+      props.setShowLogin(true);
+      queryClient.invalidateQueries(["books"]);
+    },
   });
 
-  return <div></div>;
+  return (
+    <>
+      <div className="row">
+        <div className="col-md-3">
+          <input
+            type="text"
+            className="col-md-3"
+            placeholder="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          ></input>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default CreatingProfile;

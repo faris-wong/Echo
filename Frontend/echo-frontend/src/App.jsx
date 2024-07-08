@@ -35,7 +35,10 @@ const App = () => {
           {/* using accesstoken to set display if accesstoken is true it will display, basically needs login */}
           {!accessToken && showLogin && <Login setShowLogin={setShowLogin} />}
           {!accessToken && !showLogin && (
-            <Register setShowLogin={setShowLogin} />
+            <Register
+              setShowCreateProfile={setShowCreateProfile}
+              setShowLogin={setShowLogin}
+            />
           )}
           {accessToken && <ChatRoom />}
         </UserContext.Provider>

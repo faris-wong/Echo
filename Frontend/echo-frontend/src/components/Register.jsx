@@ -1,33 +1,37 @@
 import React from "react";
-import UseFetch from "../hooks/useFetch";
+import UseFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import CreatingProfile from "./CreatingProfile";
 
 const Register = (props) => {
-  const usingFetch = UseFetch();
+  const usingFetch = UseFetchNT();
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPW, setConfirmPW] = useState("");
+  const [id, setId] = useState("");
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["echo"], // fill whatever necessary here
     queryFn: async () => await usingFetch("/roles"),
   });
 
-  const { mutate } = useMutation({
+  const { mutate, data: newUser } = useMutation({
     mutationFn: async () => {
-      await usingFetch("/auth/register", "PUT", {
+      return await usingFetch("/auth/register", "PUT", {
         email,
         password,
         role,
+        id,
       });
     },
-    onSuccess: () => props.setShowLogin(true),
+    onSuccess: () => props.setShowCreateProfile(true),
   });
 
   return (
     <>
+      {JSON.stringify(newUser)}
       <div className="row">
         <div className="col-md-6"></div>
         <input
@@ -70,19 +74,6 @@ const Register = (props) => {
 
       <div className="row">
         <div className="col-md-6"></div>
-        <input
-          type="text"
-          className="col-md-5"
-          placeholder="Please decide on username"
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-        />
-      </div>
-
-      <div className="row">
-        <div className="col-md-6"></div>
         <select
           name="roles"
           id="roles"
@@ -107,7 +98,13 @@ const Register = (props) => {
           <div className="row-md-9"></div>
           {/* Conditionally render based on password match */}
           {password === confirmPW ? (
-            <button className="row-md-9" onClick={mutate}>
+            <button
+              className="row-md-9"
+              onClick={() => {
+                mutate();
+                return <>{/* <CreatingProfile></CreatingProfile> */}</>;
+              }}
+            >
               Register
             </button>
           ) : (
