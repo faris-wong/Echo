@@ -16,6 +16,7 @@ const App = () => {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState("");
   const [showLogin, setShowLogin] = useState(true);
+  const [showCreateProfile, setShowCreateProfile] = useState(true);
 
   return (
     <>
