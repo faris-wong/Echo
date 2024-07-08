@@ -4,14 +4,11 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import UserContext from "./context/user";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-<<<<<<< HEAD
 import ProfilePage from "./components/ProfilePage";
 import Navbar from "./components/Navbar";
 import Newsfeed from "./components/Newsfeed";
 import { Route, Routes } from "react-router-dom";
-=======
 import { useState } from "react";
->>>>>>> Login-feature
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -22,7 +19,6 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-<<<<<<< HEAD
         <Navbar />
         <div className="content">
           <Routes>
@@ -31,7 +27,6 @@ const App = () => {
             <Route path="Profile" element={<ProfilePage />} />
           </Routes>
         </div>
-=======
         <UserContext.Provider
           value={{ accessToken, setAccessToken, role, setRole }}
         >
@@ -42,7 +37,6 @@ const App = () => {
           )}
           {accessToken && <ChatRoom />}
         </UserContext.Provider>
->>>>>>> Login-feature
       </QueryClientProvider>
     </>
   );
