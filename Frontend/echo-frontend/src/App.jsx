@@ -34,7 +34,7 @@ const App = () => {
 
             <Route
               path="Profile"
-              element={<ProfilePage profileID={profileID} />}
+              element={<ProfilePage communityId={communityId} profileID={profileID} />}
             />
           </Routes>
         </div>
