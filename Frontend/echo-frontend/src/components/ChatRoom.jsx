@@ -3,11 +3,11 @@ import MsgCard from "./MsgCard";
 import InputBox from "./InputBox";
 import styles from "./css/ChatRoom.module.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import UseFetch from "../hooks/useFetch";
+import useFetchNT from "../hooks/useFetchNT";
 
 const ChatRoom = (props) => {
   const queryClient = useQueryClient();
-  const usingFetch = UseFetch();
+  const usingFetch = useFetchNT();
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs"],
