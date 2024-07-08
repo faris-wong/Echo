@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UseFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -10,28 +10,36 @@ const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPW, setConfirmPW] = useState("");
-  const [id, setId] = useState("");
+  const [userId, setUserId] = useState("");
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["echo"], // fill whatever necessary here
     queryFn: async () => await usingFetch("/roles"),
   });
 
-  const { mutate, data: newUser } = useMutation({
+  const { mutate, data: newUserProfile } = useMutation({
     mutationFn: async () => {
       return await usingFetch("/auth/register", "PUT", {
         email,
         password,
         role,
-        id,
       });
     },
-    onSuccess: () => props.setShowCreateProfile(true),
+    onSuccess: (data) => {
+      if (data && data.id) {
+        setUserId(data.id);
+        // Optionally, trigger some other actions based on success
+        // props.setShowCreateProfile(true);
+      }
+    },
   });
+
+  useEffect(() => {
+    console.log(userId);
+  }, [userId]);
 
   return (
     <>
-      {JSON.stringify(newUser)}
       <div className="row">
         <div className="col-md-6"></div>
         <input
@@ -102,7 +110,6 @@ const Register = (props) => {
               className="row-md-9"
               onClick={() => {
                 mutate();
-                return <>{/* <CreatingProfile></CreatingProfile> */}</>;
               }}
             >
               Register
