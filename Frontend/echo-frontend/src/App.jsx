@@ -28,9 +28,10 @@ const App = () => {
           <Routes>
             <Route path="Home" element={<Newsfeed />} />
             <Route
-              path="Community"
+              path="community/:communityId"
               element={<ChatRoom communityID={communityID} />}
             />
+
             <Route
               path="Profile"
               element={<ProfilePage profileID={profileID} />}
