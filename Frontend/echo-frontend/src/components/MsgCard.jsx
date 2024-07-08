@@ -23,7 +23,7 @@ const MsgCard = (props) => {
       <div className={styles.timeStamp}>
       <span>{`${formatDate(props.timeStamp)} | ${formatTime(props.timeStamp)}`}</span>
       </div>
-      <h4>User5391</h4>
+      <h4>{props.username}</h4>
       <span className={styles.status}>online</span>
       <div className={styles.textBox}>
         <p>

@@ -44,7 +44,7 @@ const seedMessages = async (req, res) => {
 const getMessages = async (req, res) => {
   try {
     const allMessages = await MessagesModel.find()
-      .populate("profilelink", "username")
+      .populate("profilelink", "username bio")
       .populate("communitylink", "communityname");
     res.json(allMessages);
   } catch (error) {
@@ -71,9 +71,9 @@ const getMessageByCommunity = async (req, res) => {
 
 const createMessages = async (req, res) => {
   try {
-    const messageUser = await ProfileModel.findOne({ _id: req.body.chicken });
+    const messageUser = await ProfileModel.findOne({ _id: req.body.profile });
     const messageInCommunity = await CommunityModel.findOne({
-      _id: req.body.duck,
+      _id: req.body.community,
     });
     const newMessage = {
       message: req.body.message,
@@ -117,5 +117,4 @@ module.exports = {
   createMessages,
   updateMessages,
   deleteMessages,
-  seedMessages,
 };

@@ -3,6 +3,7 @@
   margin: 10px;
   width: 98%;
   position: fixed;
+  z-index: 20;
 }
 
 .container {

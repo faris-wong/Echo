@@ -5,6 +5,7 @@ import ProfilePage from "./components/ProfilePage";
 
 const App = () => {
   const queryClient = new QueryClient();
+  
   return (
     <>
       <QueryClientProvider client={queryClient}>
