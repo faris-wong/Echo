@@ -29,7 +29,7 @@ const App = () => {
             <Route path="Home" element={<Newsfeed />} />
             <Route
               path="Community"
-              element={<ChatRoom communityID={communityID} />}
+              element={<ChatRoom communityID={communityID} profileID={profileID} />}
             />
             <Route
               path="Profile"
