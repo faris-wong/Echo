@@ -58,6 +58,7 @@ const App = () => {
                 element={
                   <ProfilePage
                     communityId={communityID}
+                    authID={authID}
                     // getProfileByAuth={getProfileByAuth}
                   />
                 }
