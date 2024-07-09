@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./css/ProfilePage.module.css";
 import { useState, useEffect } from "react";
 import ProfileUpdateModal from "./ProfileUpdateModal";
+import UserContext from "../context/user";
 
 const ProfilePage = (props) => {
+  const userCtx = useContext(UserContext);
   const [profile, setProfile] = useState("");
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
@@ -14,9 +16,12 @@ const ProfilePage = (props) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          id: props.profileID,
-        }),
+        body: JSON.stringify(
+          {
+            id: props.profileID,
+          },
+          userCtx.accessToken
+        ),
       });
       if (!response.ok) {
         throw new Error("fetch error");
