@@ -46,12 +46,14 @@ const App = () => {
           <div className="content">
             <Routes>
               <Route path="Home" element={<Newsfeed />} />
-              <Route
-                path="community/:communityID"
-                element={
-                  <Community communityID={communityID} authID={authID} />
-                }
-              />
+              {accessToken && (
+                <Route
+                  path="community/:communityID"
+                  element={
+                    <Community communityID={communityID} authID={authID} />
+                  }
+                />
+              )}
 
               <Route
                 path="Profile"
