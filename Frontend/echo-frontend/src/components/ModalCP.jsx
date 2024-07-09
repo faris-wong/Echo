@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import useFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styles from "./css/ModalCP.module.css";
+import { useState } from "react";
 
 const Overlay = (props) => {
   const [username, setUsername] = useState("");
@@ -22,15 +23,7 @@ const Overlay = (props) => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <div className={styles.delBtn}>
-          <i
-            className="fa-solid fa-xmark"
-            onClick={() => {
-              mutate();
-              props.setModalCP(false);
-            }}
-          ></i>
-        </div>
+        <div className={styles.delBtn}></div>
         Please decide on a Username:
         <div>
           <input
@@ -42,6 +35,15 @@ const Overlay = (props) => {
             }}
           />
         </div>
+        <button
+          onClick={() => {
+            mutate();
+            props.setModalCP(false);
+            props.setShowLogin(true);
+          }}
+        >
+          Proceed
+        </button>
       </div>
     </div>
   );
@@ -55,6 +57,7 @@ const ModalCP = (props) => {
           authId={props.authId}
           setUserId={props.setUserId}
           setModalCP={props.setModalCP}
+          setShowLogin={props.setShowLogin}
         />,
         document.querySelector("#root")
       )}

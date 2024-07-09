@@ -36,8 +36,8 @@ const Register = (props) => {
   });
 
   useEffect(() => {
-    console.log(userId);
-  }, [userId]);
+    console.log(authId);
+  }, [authId]);
 
   return (
     <>
@@ -130,7 +130,7 @@ const Register = (props) => {
           <div className="row-md-8"></div>
         </div>
       </div>
-      {modalCP && <ModalCP setModalCP={setModalCP} authId={authId}></ModalCP>}
+      {modalCP && <ModalCP setShowLogin = {props.setShowLogin} setModalCP={setModalCP} authId={authId}></ModalCP>}
     </>
   );
 };

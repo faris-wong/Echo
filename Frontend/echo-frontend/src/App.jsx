@@ -18,7 +18,6 @@ const App = () => {
   const [showLogin, setShowLogin] = useState(true);
   const [profileID, setProfileID] = useState("");
   const [communityID, setCommunityID] = useState("");
-  const [showCreateProfile, setShowCreateProfile] = useState(true);
 
   return (
     <>
@@ -51,7 +50,6 @@ const App = () => {
           )}
           {!accessToken && !showLogin && (
             <Register
-              setShowCreateProfile={setShowCreateProfile}
               setShowLogin={setShowLogin}
             />
           )}
