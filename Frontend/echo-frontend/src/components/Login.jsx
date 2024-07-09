@@ -43,6 +43,13 @@ const Login = (props) => {
       <div className="row">
         <div className="col-md-3"></div>
         <input
+          style={{
+            padding: "10px",
+            borderRadius: "25px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "black",
+          }}
           type="text"
           className="col-md-3"
           placeholder="email"
@@ -55,6 +62,13 @@ const Login = (props) => {
       <div className="row">
         <div className="col-md-3"></div>
         <input
+          style={{
+            padding: "5px",
+            borderRadius: "25px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "black",
+          }}
           type="password"
           className="col-md-3"
           placeholder="password"
@@ -66,15 +80,30 @@ const Login = (props) => {
 
       <div className="row">
         <div className="col-md-3"></div>
-        <button className="col-md-3" onClick={refetch}>
+        <button
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "cyan",
+            color: "black",
+          }}
+          className="col-sm-1"
+          onClick={refetch}
+        >
           Login
         </button>
-        <div className="col-md-3"></div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-3"></div>
-        <button className="col-md-3" onClick={() => props.setShowLogin(false)}>
+        <button
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "#89bbff",
+            color: "black",
+          }}
+          className="col-sm-2"
+          onClick={() => props.setShowLogin(false)}
+        >
           Register
         </button>
         <div className="col-md-3"></div>

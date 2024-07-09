@@ -46,12 +46,14 @@ const App = () => {
           <div className="content">
             <Routes>
               <Route path="Home" element={<Newsfeed />} />
-              <Route
-                path="community/:communityID"
-                element={
-                  <Community communityID={communityID} authID={authID} />
-                }
-              />
+              {accessToken && (
+                <Route
+                  path="community/:communityID"
+                  element={
+                    <Community communityID={communityID} authID={authID} />
+                  }
+                />
+              )}
 
               <Route
                 path="Profile"
@@ -67,13 +69,10 @@ const App = () => {
                   }
                 />
               )}
-              {!accessToken && !showLogin && (
-                <Route
-                  path="Register"
-                  element={<Register setShowLogin={setShowLogin} />}
-                />
-              )}
             </Routes>
+            {!accessToken && !showLogin && (
+              <Register setShowLogin={setShowLogin} />
+            )}
           </div>
         </UserContext.Provider>
       </QueryClientProvider>

@@ -42,51 +42,81 @@ const Register = (props) => {
   return (
     <>
       <div className="row">
-        <div className="col-md-6"></div>
+        <div className="col-sm-1"></div>
         <input
+          style={{
+            padding: "10px",
+            borderRadius: "25px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "white",
+          }}
           type="text"
-          className="col-md-5"
+          className="col-sm-3"
           placeholder="email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
         />
-        <div className="col-md-6"></div>
+        <div className="col-sm-1"></div>
       </div>
 
       <div className="row">
-        <div className="col-md-6"></div>
+        <div className="col-sm-1"></div>
         <input
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "white",
+          }}
           type="text"
-          className="col-md-5"
+          className="col-sm-3"
           placeholder="password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         />
+        <div className="col-sm-1"></div>
       </div>
 
       <div className="row">
-        <div className="col-md-6"></div>
+        <div className="col-sm-1"></div>
         <input
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "white",
+          }}
           type="text"
-          className="col-md-5"
+          className="col-sm-3"
           placeholder="confirm password"
           value={confirmPW}
           onChange={(e) => {
             setConfirmPW(e.target.value);
           }}
         />
+        <div className="col-sm-1"></div>
       </div>
 
       <div className="row">
-        <div className="col-md-6"></div>
+        <div className="col-sm-1"></div>
         <select
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "cyan",
+            color: "black",
+          }}
           name="roles"
           id="roles"
-          className="col-md-5"
+          className="col-sm-3"
           value={role}
           onChange={(e) => setRole(e.target.value)}
         >
@@ -100,37 +130,61 @@ const Register = (props) => {
               );
             })}
         </select>
-        <div className="col-md-6"></div>
-
-        <br />
-        <div className="col">
-          <div className="row-md-9"></div>
-          {/* Conditionally render based on password match */}
-          {password === confirmPW ? (
-            <button
-              className="row-md-9"
-              onClick={() => {
-                mutate();
-                setModalCP(true);
-              }}
-            >
-              Register
-            </button>
-          ) : (
-            <div>Passwords do not match</div>
-          )}
-          <div className="row-sm-8"></div>
-        </div>
-
-        <div className="col">
-          <div className="row-md-8"></div>
-          <button className="row-md-8" onClick={() => props.setShowLogin(true)}>
-            Go to Login
-          </button>
-          <div className="row-md-8"></div>
-        </div>
+        <div className="col-sm-1"></div>
       </div>
-      {modalCP && <ModalCP setShowLogin = {props.setShowLogin} setModalCP={setModalCP} authId={authId}></ModalCP>}
+      <div className="row">
+        <div className="col-sm-1"></div>
+        {/* Conditionally render based on password match */}
+        {password === confirmPW ? (
+          <button
+            style={{
+              padding: "10px",
+              borderRadius: "35px",
+              gap: "3px",
+              backgroundColor: "cyan",
+              color: "black",
+            }}
+            className="col-sm-3"
+            onClick={() => {
+              mutate();
+              setModalCP(true);
+            }}
+          >
+            Register
+          </button>
+        ) : (
+          <div style={{ color: "yellow" }} className="col-sm-3">
+            Passwords do not match!
+          </div>
+        )}
+      </div>
+      <div className="col-sm-1"></div>
+
+      <div className="row">
+        <div className="col-sm-1"></div>
+        <button
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "3px",
+            backgroundColor: "#89bbff",
+            color: "black",
+          }}
+          className="col-sm-3"
+          onClick={() => props.setShowLogin(true)}
+        >
+          Go to Login
+        </button>
+        <div className="col-sm-1"></div>
+      </div>
+
+      {modalCP && (
+        <ModalCP
+          setShowLogin={props.setShowLogin}
+          setModalCP={setModalCP}
+          authId={authId}
+        ></ModalCP>
+      )}
     </>
   );
 };

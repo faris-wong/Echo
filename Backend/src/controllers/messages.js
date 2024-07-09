@@ -54,14 +54,16 @@ const getMessages = async (req, res) => {
 };
 
 const getMessageByCommunity = async (req, res) => {
-  const allMessages = await MessagesModel.find()
-    .populate("profilelink", "username")
-    .populate("communitylink", "communityname");
+  // const allMessages = await MessagesModel.find()
+  //   .populate("profilelink", "username")
+  //   .populate("communitylink", "communityname");
   const CommunityInfo = {};
   if (req.body?.id) CommunityInfo.communitylink = req.body.id;
 
   try {
-    const allMessages = await MessagesModel.find(CommunityInfo);
+    const allMessages = await MessagesModel.find(CommunityInfo)
+      .populate("profilelink", "username")
+      .populate("communitylink", "communityname");
     res.json(allMessages);
   } catch (error) {
     console.error(error.message);
