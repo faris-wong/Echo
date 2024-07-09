@@ -3,14 +3,14 @@ import MsgCard from "./MsgCard";
 import InputBox from "./InputBox";
 import styles from "./css/ChatRoom.module.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import useFetchNT from "../hooks/useFetchNT";
+import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import UserContext from "../context/user";
 
 const Community = (props) => {
   const userCtx = useContext(UserContext);
   const queryClient = useQueryClient();
-  const usingFetch = useFetchNT();
+  const usingFetch = useFetch();
   const params = useParams();
   const [communityData, setCommunityData] = useState({});
 
@@ -23,17 +23,27 @@ const Community = (props) => {
   } = useQuery({
     queryKey: ["community", params.communityID],
     queryFn: async (id) =>
-      await usingFetch("/community", "POST", {
-        id: params.communityID,
-      }),
+      await usingFetch(
+        "/community",
+        "POST",
+        {
+          id: params.communityID,
+        },
+        userCtx.accessToken
+      ),
   });
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs", params.communityID],
     queryFn: async () =>
-      await usingFetch("/messagebycommunity", "POST", {
-        id: params.communityID,
-      }),
+      await usingFetch(
+        "/messagebycommunity",
+        "POST",
+        {
+          id: params.communityID,
+        },
+        userCtx.accessToken
+      ),
   });
 
   const {
@@ -45,9 +55,14 @@ const Community = (props) => {
   } = useQuery({
     queryKey: ["profile"],
     queryFn: async () =>
-      await usingFetch("/profileaccount", "POST", {
-        accountlink: props.authID,
-      }),
+      await usingFetch(
+        "/profileaccount",
+        "POST",
+        {
+          accountlink: props.authID,
+        },
+        userCtx.accessToken
+      ),
   });
 
   // const getProfileByAuth = useMutation({
@@ -68,9 +83,14 @@ const Community = (props) => {
 
   const deleteMessage = useMutation({
     mutationFn: async (id) =>
-      await usingFetch("/message", "DELETE", {
-        id,
-      }),
+      await usingFetch(
+        "/message",
+        "DELETE",
+        {
+          id,
+        },
+        userCtx.accessToken
+      ),
     onSuccess: () => {
       queryClient.invalidateQueries(["msgs", params.communityID]);
     },

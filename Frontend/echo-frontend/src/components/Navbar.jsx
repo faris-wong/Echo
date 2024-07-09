@@ -66,6 +66,28 @@ const Navbar = (props) => {
             </div>
           </NavLink>
         </li>
+        <li className={styles.profile}>
+          <NavLink to="/Login">
+            <div className={styles.profileContainer}>
+              <div>login here</div>
+              <div className={styles.profileInfo}>
+                <h1 className={styles.userName}>User1234</h1>
+                <p className={styles.status}>Online</p>
+              </div>
+            </div>
+          </NavLink>
+        </li>
+        <li className={styles.profile}>
+          <NavLink to="/Register">
+            <div className={styles.profileContainer}>
+              <div>Register Here</div>
+              <div className={styles.profileInfo}>
+                <h1 className={styles.userName}>User1234</h1>
+                <p className={styles.status}>Online</p>
+              </div>
+            </div>
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
