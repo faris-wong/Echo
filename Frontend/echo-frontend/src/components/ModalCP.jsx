@@ -37,7 +37,7 @@ const Overlay = (props) => {
   );
 };
 
-const ProfileUpdateModal = (props) => {
+const ModalCP = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
@@ -55,4 +55,4 @@ const ProfileUpdateModal = (props) => {
   );
 };
 
-export default ProfileUpdateModal;
+export default ModalCP;
