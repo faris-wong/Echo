@@ -44,7 +44,7 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <input
-          style={{ backgroundColor: "purple", color: "whitesmoke" }}
+          style={{ backgroundColor: "violet", color: "white" }}
           type="text"
           className="col-sm-3"
           placeholder="email"
@@ -59,7 +59,7 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <input
-          style={{ backgroundColor: "purple", color: "whitesmoke" }}
+          style={{ backgroundColor: "violet", color: "white" }}
           type="text"
           className="col-sm-3"
           placeholder="password"
@@ -74,7 +74,7 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <input
-          style={{ backgroundColor: "purple", color: "whitesmoke" }}
+          style={{ backgroundColor: "violet", color: "white" }}
           type="text"
           className="col-sm-3"
           placeholder="confirm password"
@@ -89,7 +89,7 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <select
-          style={{ backgroundColor: "green", color: "whitesmoke" }}
+          style={{ backgroundColor: "cyan", color: "black" }}
           name="roles"
           id="roles"
           className="col-sm-3"
@@ -113,7 +113,7 @@ const Register = (props) => {
         {/* Conditionally render based on password match */}
         {password === confirmPW ? (
           <button
-            style={{ backgroundColor: "green", color: "whitesmoke" }}
+            style={{ backgroundColor: "cyan", color: "black" }}
             className="col-sm-3"
             onClick={() => {
               mutate();
@@ -133,7 +133,7 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <button
-          style={{ backgroundColor: "blue", color: "whitesmoke" }}
+          style={{ backgroundColor: "#89bbff", color: "black" }}
           className="col-sm-3"
           onClick={() => props.setShowLogin(true)}
         >

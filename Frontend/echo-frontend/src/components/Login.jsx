@@ -44,8 +44,8 @@ const Login = (props) => {
         <div className="col-md-3"></div>
         <input
           style={{
-            backgroundColor: "purple",
-            color: "whitesmoke",
+            backgroundColor: "violet",
+            color: "black",
           }}
           type="text"
           className="col-md-3"
@@ -60,8 +60,8 @@ const Login = (props) => {
         <div className="col-md-3"></div>
         <input
           style={{
-            backgroundColor: "purple",
-            color: "whitesmoke",
+            backgroundColor: "violet",
+            color: "black",
           }}
           type="password"
           className="col-md-3"
@@ -75,14 +75,14 @@ const Login = (props) => {
       <div className="row">
         <div className="col-md-3"></div>
         <button
-          style={{ backgroundColor: "green", color: "white" }}
+          style={{ backgroundColor: "cyan", color: "black" }}
           className="col-sm-1"
           onClick={refetch}
         >
           Login
         </button>
         <button
-          style={{ backgroundColor: "blue", color: "white" }}
+          style={{ backgroundColor: "#89bbff", color: "black" }}
           className="col-sm-2"
           onClick={() => props.setShowLogin(false)}
         >
