@@ -64,16 +64,13 @@ const Community = (props) => {
 
   return (
     <>
-      <div className={styles.header}>
+      <h1>{JSON.stringify(frog)}</h1>
+      {/* <div className={styles.header}>
         {successful && <h1>{chicken.communityname} </h1>}
-      </div>
+      </div> */}
       <div className={styles.msgContainer}></div>
       <div>
-        <InputBox
-          communityID={params.communityID}
-          profile={frog}
-
-        />
+        <InputBox communityID={params.communityID} profile={frog} />
       </div>
       {isFetching && <h1>Loading...</h1>}
 

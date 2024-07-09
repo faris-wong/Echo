@@ -9,7 +9,7 @@ const Login = (props) => {
   const userCtx = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [authID, setAuthID] = useState("");
+  // const [authID, setAuthID] = useState("");
 
   const { isError, error, data, refetch } = useQuery({
     queryKey: ["login"],
@@ -26,6 +26,7 @@ const Login = (props) => {
   useEffect(() => {
     if (data) {
       props.setAuthID(data.id);
+      console.log(data.id);
       userCtx.setAccessToken(data.access);
       const decoded = jwtDecode(data.access);
       userCtx.setRole(decoded.role);
