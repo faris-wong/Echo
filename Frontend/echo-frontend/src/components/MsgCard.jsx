@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./css/MsgCard.module.css";
+import { useQuery } from "@tanstack/react-query";
 
 const MsgCard = (props) => {
   const formatTime = (date) => {
@@ -15,6 +16,19 @@ const MsgCard = (props) => {
     const parsedDate = new Date(date);
     return parsedDate.toLocaleDateString("en-GB");
   };
+
+  const { isSuccess, isError, error, isFetching, data } = useQuery({
+    queryKey: ["profile"],
+    queryFn: async (id) =>
+      await usingFetch(
+        "/profile",
+        "POST",
+        {
+          id: props.profile,
+        },
+        userCtx.accessToken
+      ),
+  });
 
   return (
     <div className={styles.cardContainer}>
@@ -32,7 +46,7 @@ const MsgCard = (props) => {
           props.timeStamp
         )}`}</span>
       </div>
-      <h4>{/*put in props.frog*/}</h4>
+      <h4>{data[0].username}</h4>
       <span className={styles.status}>online</span>
       <div className={styles.textBox}>
         <p>{props.message}</p>

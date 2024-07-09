@@ -14,6 +14,7 @@ const Community = (props) => {
   const params = useParams();
   const [communityData, setCommunityData] = useState({});
 
+  // to display community name
   const {
     isSuccess: successful,
     isError: errorful,
@@ -33,6 +34,7 @@ const Community = (props) => {
       ),
   });
 
+  // to display messages in specific community
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs", params.communityID],
     queryFn: async () =>
@@ -46,6 +48,7 @@ const Community = (props) => {
       ),
   });
 
+  // to fetch profile of person sending message
   const {
     isSuccess: duck,
     isError: pig,
@@ -111,7 +114,7 @@ const Community = (props) => {
       </div>
       <div className={styles.msgContainer}></div>
       <div>
-        <InputBox communityID={params.communityID} />
+        <InputBox communityID={params.communityID} profile={frog} />
       </div>
       {isFetching && <h1>Loading...</h1>}
 
@@ -119,10 +122,12 @@ const Community = (props) => {
 
       {isSuccess &&
         data.map((item) => {
+          console.log(item);
           return (
             <MsgCard
               key={item._id}
               id={item._id}
+              profile={item.profilelink}
               message={item.message}
               timeStamp={item.timeStamp}
               handleDelete={handleDelete}
