@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import MsgCard from "./MsgCard";
 import InputBox from "./InputBox";
 import styles from "./css/ChatRoom.module.css";
@@ -28,7 +28,7 @@ const Community = (props) => {
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs", params.communityID],
-    queryFn: async (id) =>
+    queryFn: async () =>
       await usingFetch("/messagebycommunity", "POST", {
         id: params.communityID,
       }),
@@ -42,11 +42,27 @@ const Community = (props) => {
     data: frog,
   } = useQuery({
     queryKey: ["profile"],
-    queryFn: async (accountlink) =>
+    queryFn: async () =>
       await usingFetch("/profileaccount", "POST", {
         accountlink: props.authID,
       }),
   });
+
+  // const getProfileByAuth = useMutation({
+  //   mutationFn: async () => {
+  //     return await usingFetch("/profileaccount", "POST", {
+  //       accountlink: props.authID,
+  //     });
+  //   },
+  //   // onSuccess: () => {
+  //   //   queryClient.invalidateQueries(["msgs", params.communityID]);
+  //   // },
+  // });
+
+  // useEffect(() => {
+  //   console.log(props.authID);
+  //   getProfileByAuth.mutate(props.authID);
+  // }, []);
 
   const deleteMessage = useMutation({
     mutationFn: async (id) =>
@@ -64,13 +80,16 @@ const Community = (props) => {
 
   return (
     <>
-      <h1>{JSON.stringify(frog)}</h1>
-      {/* <div className={styles.header}>
-        {successful && <h1>{chicken.communityname} </h1>}
-      </div> */}
+      <div className={styles.header}>
+        {successful && (
+          <h1>
+            {chicken.communityname} + {props.authID} + {JSON.stringify(frog)}
+          </h1>
+        )}
+      </div>
       <div className={styles.msgContainer}></div>
       <div>
-        <InputBox communityID={params.communityID} profile={frog} />
+        <InputBox communityID={params.communityID} />
       </div>
       {isFetching && <h1>Loading...</h1>}
 
@@ -82,7 +101,6 @@ const Community = (props) => {
             <MsgCard
               key={item._id}
               id={item._id}
-              profile={frog}
               message={item.message}
               timeStamp={item.timeStamp}
               handleDelete={handleDelete}

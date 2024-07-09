@@ -8,6 +8,8 @@ const useFetchNT = () => {
       body: JSON.stringify(body),
     });
 
+    console.log(res);
+
     if (!res.ok) {
       throw new Error({ status: res.status, msg: "database error" });
     }

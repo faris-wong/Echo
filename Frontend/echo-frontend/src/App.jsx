@@ -3,7 +3,11 @@ import Community from "./components/Community";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import UserContext from "./context/user";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useMutation,
+} from "@tanstack/react-query";
 import ProfilePage from "./components/ProfilePage";
 import Navbar from "./components/Navbar";
 import Newsfeed from "./components/Newsfeed";
@@ -16,10 +20,21 @@ const App = () => {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState("");
   const [showLogin, setShowLogin] = useState(true);
-  const [profileID, setProfileID] = useState("");
   const [communityID, setCommunityID] = useState("");
   const [showCreateProfile, setShowCreateProfile] = useState(true);
   const [authID, setAuthID] = useState("");
+
+  // const getProfileByAuth = useMutation({
+  //   mutationFn: async () => {
+  //     return await usingFetch("/profileaccount", "POST", {
+  //       accountlink: authID,
+  //     });
+  //   },
+  // });
+
+  // useEffect(() => {
+  //   getProfileByAuth.mutate(authID);
+  // }, []);
 
   return (
     <>
@@ -30,19 +45,16 @@ const App = () => {
             <Route path="Home" element={<Newsfeed />} />
             <Route
               path="community/:communityID"
-              element={
-                <Community
-                  communityID={communityID}
-                  profileID={profileID}
-                  authID={authID}
-                />
-              }
+              element={<Community communityID={communityID} authID={authID} />}
             />
 
             <Route
               path="Profile"
               element={
-                <ProfilePage communityId={communityID} profileID={profileID} />
+                <ProfilePage
+                  communityId={communityID}
+                  // getProfileByAuth={getProfileByAuth}
+                />
               }
             />
           </Routes>
@@ -54,14 +66,13 @@ const App = () => {
           {!accessToken && showLogin && (
             <Login
               setShowLogin={setShowLogin}
-              setProfileID={setProfileID}
+              // setProfileID={setProfileID}
               setAuthID={setAuthID}
             />
           )}
           {!accessToken && !showLogin && (
             <Register setShowLogin={setShowLogin} />
           )}
-          {accessToken && <div>hello</div>}
         </UserContext.Provider>
       </QueryClientProvider>
     </>

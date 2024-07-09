@@ -3,12 +3,14 @@ import useFetch from "../hooks/useFetch";
 import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const usingFetch = useFetch();
   const userCtx = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   // const [authID, setAuthID] = useState("");
 
   const { isError, error, data, refetch } = useQuery({
@@ -30,6 +32,8 @@ const Login = (props) => {
       userCtx.setAccessToken(data.access);
       const decoded = jwtDecode(data.access);
       userCtx.setRole(decoded.role);
+      // <Navigate to="/Home"></Navigate>;
+      navigate("Home");
     }
   }, [data]);
 

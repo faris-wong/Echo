@@ -83,6 +83,7 @@ const getProfileByAccountLink = async (req, res) => {
   if (req.body?.accountlink) ProfileInfo.accountlink = req.body.accountlink;
   try {
     const Profile = await ProfileModel.find(ProfileInfo);
+    console.log(Profile);
     res.json(Profile);
   } catch (error) {
     res.json({ status: "error", msg: "error fetching profile" });
