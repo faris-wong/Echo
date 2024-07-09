@@ -118,12 +118,12 @@ const deleteProfileById = async (req, res) => {
 
 const updateProfileById = async (req, res) => {
   try {
-    const updateProfile = {};
-    if (req.body?.username) updateProfile.username = req.body.username;
-    if (req.body?.bio) updateProfile.bio = req.body.bio;
-    if (req.body?.status) updateProfile.status = req.body.status;
-    if (req.body?.community) updateProfile.community = req.body.community;
-
+    const updateProfile = {
+      username: req.body.username,
+      bio: req.body.bio,
+      status: req.body.status,
+      community: req.body.community,
+    };
     await ProfileModel.findByIdAndUpdate(req.params.id, updateProfile);
     res.json({ status: "ok", msg: "profile updated" });
   } catch (error) {

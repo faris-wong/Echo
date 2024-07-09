@@ -8,8 +8,6 @@ import useFetch from "../hooks/useFetch";
 
 const ProfilePage = (props) => {
   const userCtx = useContext(UserContext);
-  const queryClient = useQueryClient();
-  const [profile, setProfile] = useState("");
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const usingFetch = useFetch();
 
@@ -26,11 +24,12 @@ const ProfilePage = (props) => {
       ),
   });
 
+
   return (
     <>
       <h1>{JSON.stringify(data)}</h1>
       {showUpdateModal && (
-        <ProfileUpdateModal setShowUpdateModal={setShowUpdateModal} />
+        <ProfileUpdateModal setShowUpdateModal={setShowUpdateModal} data={data}/>
       )}
       {isFetching && <h1>Loading...</h1>}
 
