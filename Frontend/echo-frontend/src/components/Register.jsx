@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import UseFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import CreatingProfile from "./CreatingProfile";
+import ModalCP from "./ModalCP";
 
 const Register = (props) => {
   const usingFetch = UseFetchNT();
@@ -10,7 +10,8 @@ const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPW, setConfirmPW] = useState("");
-  const [userId, setUserId] = useState("");
+  const [authId, setAuthId] = useState("");
+  const [modalCP, setModalCP] = useState(false);
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["echo"], // fill whatever necessary here
@@ -27,16 +28,16 @@ const Register = (props) => {
     },
     onSuccess: (data) => {
       if (data && data.id) {
-        setUserId(data.id);
+        setAuthId(data.id);
+        // auth id
         // Optionally, trigger some other actions based on success
-        // props.setShowCreateProfile(true);
       }
     },
   });
 
   useEffect(() => {
-    console.log(userId);
-  }, [userId]);
+    console.log(authId);
+  }, [authId]);
 
   return (
     <>
@@ -110,6 +111,7 @@ const Register = (props) => {
               className="row-md-9"
               onClick={() => {
                 mutate();
+                setModalCP(true);
               }}
             >
               Register
@@ -128,6 +130,7 @@ const Register = (props) => {
           <div className="row-md-8"></div>
         </div>
       </div>
+      {modalCP && <ModalCP setShowLogin = {props.setShowLogin} setModalCP={setModalCP} authId={authId}></ModalCP>}
     </>
   );
 };

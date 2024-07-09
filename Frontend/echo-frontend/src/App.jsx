@@ -21,6 +21,7 @@ const App = () => {
   const [showCreateProfile, setShowCreateProfile] = useState(true);
   const [authID, setAuthID] = useState("");
 
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
@@ -60,7 +61,6 @@ const App = () => {
           )}
           {!accessToken && !showLogin && (
             <Register
-              setShowCreateProfile={setShowCreateProfile}
               setShowLogin={setShowLogin}
             />
           )}
