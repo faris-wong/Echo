@@ -12,29 +12,19 @@ const Community = (props) => {
   const params = useParams();
   const [communityData, setCommunityData] = useState({});
 
-  const getCommunityByID = async () => {
-    try {
-      const response = await fetch(
-        import.meta.env.VITE_SERVER + `/community/${params.communityID}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: {
-            id: params.communityID,
-          },
-        }
-      );
-      if (!response.ok) {
-        throw new Error("fetch error");
-      }
-      const chicken = await response.json();
-      setCommunityData(chicken);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  const {
+    isSuccess: successful,
+    isError: errorful,
+    error: bad,
+    isFetching: fetching,
+    data: chicken,
+  } = useQuery({
+    queryKey: ["community", params.communityID],
+    queryFn: async (id) =>
+      await usingFetch("/community", "POST", {
+        id: params.communityID,
+      }),
+  });
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["msgs", params.communityID],
@@ -61,7 +51,7 @@ const Community = (props) => {
   return (
     <>
       <div className={styles.header}>
-        <h1>{JSON.stringify(communityData)}</h1>
+        {successful && <h1>{chicken.communityname} </h1>}
       </div>
       <div className={styles.msgContainer}></div>
       <div>
