@@ -64,7 +64,7 @@ const Community = (props) => {
 
   return (
     <>
-      <h1>{JSON.stringify(frog)}</h1>
+      {/* <h1>{JSON.stringify(frog)}</h1> */}
       {/* <div className={styles.header}>
         {successful && <h1>{chicken.communityname} </h1>}
       </div> */}

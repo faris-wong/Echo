@@ -56,7 +56,6 @@ const ModalCP = (props) => {
       {ReactDOM.createPortal(
         <Overlay
           authId={props.authId}
-          setUserId={props.setUserId}
           setModalCP={props.setModalCP}
           setShowLogin={props.setShowLogin}
         />,
