@@ -44,7 +44,13 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <input
-          style={{ backgroundColor: "violet", color: "white" }}
+          style={{
+            padding: "10px",
+            borderRadius: "25px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "white",
+          }}
           type="text"
           className="col-sm-3"
           placeholder="email"
@@ -59,7 +65,13 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <input
-          style={{ backgroundColor: "violet", color: "white" }}
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "white",
+          }}
           type="text"
           className="col-sm-3"
           placeholder="password"
@@ -74,7 +86,13 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <input
-          style={{ backgroundColor: "violet", color: "white" }}
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "violet",
+            color: "white",
+          }}
           type="text"
           className="col-sm-3"
           placeholder="confirm password"
@@ -89,7 +107,13 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <select
-          style={{ backgroundColor: "cyan", color: "black" }}
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "2px",
+            backgroundColor: "cyan",
+            color: "black",
+          }}
           name="roles"
           id="roles"
           className="col-sm-3"
@@ -113,7 +137,13 @@ const Register = (props) => {
         {/* Conditionally render based on password match */}
         {password === confirmPW ? (
           <button
-            style={{ backgroundColor: "cyan", color: "black" }}
+            style={{
+              padding: "10px",
+              borderRadius: "35px",
+              gap: "3px",
+              backgroundColor: "cyan",
+              color: "black",
+            }}
             className="col-sm-3"
             onClick={() => {
               mutate();
@@ -133,7 +163,13 @@ const Register = (props) => {
       <div className="row">
         <div className="col-sm-1"></div>
         <button
-          style={{ backgroundColor: "#89bbff", color: "black" }}
+          style={{
+            padding: "5px",
+            borderRadius: "30px",
+            gap: "3px",
+            backgroundColor: "#89bbff",
+            color: "black",
+          }}
           className="col-sm-3"
           onClick={() => props.setShowLogin(true)}
         >

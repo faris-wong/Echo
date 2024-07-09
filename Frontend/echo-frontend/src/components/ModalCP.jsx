@@ -27,7 +27,13 @@ const Overlay = (props) => {
         Please decide on a Username:
         <div>
           <input
-            style={{ backgroundColor: "black", color: "pink" }}
+            style={{
+              padding: "10px",
+              borderRadius: "35px",
+              gap: "3px",
+              backgroundColor: "black",
+              color: "pink",
+            }}
             type="text"
             placeholder="username"
             value={username}
