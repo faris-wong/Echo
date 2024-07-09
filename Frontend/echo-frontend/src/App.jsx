@@ -14,9 +14,8 @@ import Newsfeed from "./components/Newsfeed";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 
+const queryClient = new QueryClient();
 const App = () => {
-  const queryClient = new QueryClient();
-
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState("");
   const [showLogin, setShowLogin] = useState(true);
@@ -39,40 +38,46 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Navbar />
-        <div className="content">
-          <Routes>
-            <Route path="Home" element={<Newsfeed />} />
-            <Route
-              path="community/:communityID"
-              element={<Community communityID={communityID} authID={authID} />}
-            />
-
-            <Route
-              path="Profile"
-              element={
-                <ProfilePage
-                  communityId={communityID}
-                  // getProfileByAuth={getProfileByAuth}
-                />
-              }
-            />
-          </Routes>
-        </div>
         <UserContext.Provider
           value={{ accessToken, setAccessToken, role, setRole }}
         >
           {/* using accesstoken to set display if accesstoken is true it will display, basically needs login */}
-          {!accessToken && showLogin && (
-            <Login
-              setShowLogin={setShowLogin}
-              // setProfileID={setProfileID}
-              setAuthID={setAuthID}
-            />
-          )}
-          {!accessToken && !showLogin && (
-            <Register setShowLogin={setShowLogin} />
-          )}
+          <Navbar />
+          <div className="content">
+            <Routes>
+              <Route path="Home" element={<Newsfeed />} />
+              <Route
+                path="community/:communityID"
+                element={
+                  <Community communityID={communityID} authID={authID} />
+                }
+              />
+
+              <Route
+                path="Profile"
+                element={
+                  <ProfilePage
+                    communityId={communityID}
+                    // getProfileByAuth={getProfileByAuth}
+                  />
+                }
+              />
+              {!accessToken && showLogin && (
+                <Route
+                  path="Login"
+                  element={
+                    <Login setShowLogin={setShowLogin} setAuthID={setAuthID} />
+                  }
+                />
+              )}
+              {!accessToken && !showLogin && (
+                <Route
+                  path="Register"
+                  element={<Register setShowLogin={setShowLogin} />}
+                />
+              )}
+            </Routes>
+          </div>
         </UserContext.Provider>
       </QueryClientProvider>
     </>

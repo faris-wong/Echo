@@ -1,12 +1,14 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import MsgCard from "./MsgCard";
 import InputBox from "./InputBox";
 import styles from "./css/ChatRoom.module.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useFetchNT from "../hooks/useFetchNT";
 import { useParams } from "react-router-dom";
+import UserContext from "../context/user";
 
 const Community = (props) => {
+  const userCtx = useContext(UserContext);
   const queryClient = useQueryClient();
   const usingFetch = useFetchNT();
   const params = useParams();
