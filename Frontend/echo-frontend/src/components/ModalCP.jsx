@@ -24,10 +24,10 @@ const Overlay = (props) => {
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
-        <div className={styles.delBtn}></div>
         Please decide on a Username:
         <div>
           <input
+            style={{ backgroundColor: "black", color: "pink" }}
             type="text"
             placeholder="username"
             value={username}
@@ -37,6 +37,7 @@ const Overlay = (props) => {
           />
         </div>
         <button
+          className={styles.button}
           onClick={() => {
             mutate();
             props.setModalCP(false);
