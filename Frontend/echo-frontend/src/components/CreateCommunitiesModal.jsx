@@ -1,0 +1,69 @@
+import { React, useState, useEffect } from "react";
+import styles from "./css/ProfileUpdateModal.module.css";
+import ReactDOM from "react-dom";
+
+const Overlay = (props) => {
+  const [communityName, setCommunityName] = useState("");
+
+  const createCommunity = async () => {
+    try {
+      const response = await fetch(import.meta.env.VITE_SERVER + "/community", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          communityname: communityName,
+        }),
+      });
+      console.log(response);
+      if (!response.ok) {
+        throw new Error("error adding community");
+      }
+      await response.json();
+      props.getCommunities();
+      props.setShowCommunitiesModal(false);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  return (
+    <div className={styles.backdrop}>
+      <div className={styles.modal}>
+        <div className={styles.delBtn}>
+          <i
+            className="fa-solid fa-xmark"
+            onClick={() => props.setShowCommunitiesModal(false)}
+          ></i>
+        </div>
+        <h1>Create Community</h1>
+        <div>
+          <p>Community Name: </p>
+          <input
+            type="text"
+            value={communityName}
+            onChange={(e) => setCommunityName(e.target.value)}
+          />
+        </div>
+        <button onClick={createCommunity}>Create</button>
+      </div>
+    </div>
+  );
+};
+
+const CreateCommunitiesModal = (props) => {
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <Overlay
+          getCommunities={props.getCommunities}
+          setShowCommunitiesModal={props.setShowCommunitiesModal}
+        />,
+        document.querySelector("#modal-root")
+      )}
+    </>
+  );
+};
+
+export default CreateCommunitiesModal;
