@@ -46,7 +46,7 @@ const MsgCard = (props) => {
           props.timeStamp
         )}`}</span>
       </div>
-      <h4>{data[0].username}</h4>
+      <h4>{props.profile}</h4>
       <span className={styles.status}>online</span>
       <div className={styles.textBox}>
         <p>{props.message}</p>

@@ -127,7 +127,7 @@ const Community = (props) => {
             <MsgCard
               key={item._id}
               id={item._id}
-              profile={item.profilelink}
+              profile={item.profilelink.username}
               message={item.message}
               timeStamp={item.timeStamp}
               handleDelete={handleDelete}
