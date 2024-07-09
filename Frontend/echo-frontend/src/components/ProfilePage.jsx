@@ -3,41 +3,64 @@ import styles from "./css/ProfilePage.module.css";
 import { useState, useEffect } from "react";
 import ProfileUpdateModal from "./ProfileUpdateModal";
 import UserContext from "../context/user";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 
 const ProfilePage = (props) => {
   const userCtx = useContext(UserContext);
+  const queryClient = useQueryClient();
   const [profile, setProfile] = useState("");
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
-  const getProfileByID = async () => {
-    try {
-      const response = await fetch(import.meta.env.VITE_SERVER + "/profile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          {
-            id: props.profileID,
-          },
-          userCtx.accessToken
-        ),
-      });
-      if (!response.ok) {
-        throw new Error("fetch error");
-      }
-      const profiledata = await response.json();
-      setProfile(profiledata);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const getProfileByID = async () => {
+  //   try {
+  //     const response = await fetch(import.meta.env.VITE_SERVER + "/profile", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(
+  //         {
+  //           id: props.profileID,
+  //         },
+  //         userCtx.accessToken
+  //       ),
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error("fetch error");
+  //     }
+  //     const profiledata = await response.json();
+  //     setProfile(profiledata);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
-  useEffect(() => {
-    getProfileByID();
-  }, []);
+  const {
+    isSuccess: duck,
+    isError: pig,
+    error: dog,
+    isFetching: cow,
+    data: frog,
+  } = useQuery({
+    queryKey: ["profile"],
+    queryFn: async () =>
+      await usingFetch(
+        "/profileaccount",
+        "POST",
+        {
+          accountlink: props.authID,
+        },
+        userCtx.accessToken
+      ),
+  });
+
+  // useEffect(() => {
+  //   getProfileByID();
+  // }, []);
+
   return (
     <>
+      <h1>{JSON.stringify(frog)}</h1>
       {showUpdateModal && (
         <ProfileUpdateModal setShowUpdateModal={setShowUpdateModal} />
       )}
@@ -49,13 +72,13 @@ const ProfilePage = (props) => {
           />
 
           <h1>
-            Hey, <span className={styles.userName}>{profile.username}</span>
+            Hey, <span className={styles.userName}>{frog[0].username}</span>
           </h1>
-          <span className={styles.status}>{profile.status}</span>
+          <span className={styles.status}>{frog[0].status}</span>
         </div>
         <div className={styles.gamesBio}>
           <h2>Bio</h2>
-          <div>{profile.bio}</div>
+          <div>{frog[0].bio}</div>
           <div className={styles.updateGameBtn}>
             <i
               className="fa-regular fa-pen-to-square"
@@ -65,7 +88,7 @@ const ProfilePage = (props) => {
         </div>
         <div className={styles.commBio}>
           <h2>Your Communities</h2>
-          <div>{profile.communities}</div>
+          <div>{frog[0].communities}</div>
         </div>
       </div>
     </>
