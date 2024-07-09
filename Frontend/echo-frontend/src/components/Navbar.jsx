@@ -51,7 +51,12 @@ const Navbar = (props) => {
           {userCtx.accessToken && (
             <>
               <li>
-                <div className={styles.communitiesList}>COMMUNITIES</div>
+                <div className={styles.communitiesList}>
+                  COMMUNITIES
+                  <div onClick={() => setShowCommunitiesModal(true)}>
+                    <i class="fa fa-plus"></i>
+                  </div>
+                </div>
                 <ul>
                   {communitiesList.map((community) => {
                     const toVar = "/community/" + community._id;
@@ -62,9 +67,9 @@ const Navbar = (props) => {
                       </li>
                     );
                   })}
-                  <button onClick={() => setShowCommunitiesModal(true)}>
+                  {/* <button onClick={() => setShowCommunitiesModal(true)}>
                     create community button modal
-                  </button>
+                  </button> */}
                 </ul>
               </li>
               <li className={styles.profile}>
