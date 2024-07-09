@@ -49,6 +49,7 @@ const Navbar = (props) => {
                 </li>
               );
             })}
+            <button>create community button modal</button>
           </ul>
         </li>
         <li className={styles.profile}>
