@@ -27,7 +27,6 @@ const ProfilePage = (props) => {
 
   return (
     <>
-      <h1>{JSON.stringify(data)}</h1>
       {showUpdateModal && (
         <ProfileUpdateModal setShowUpdateModal={setShowUpdateModal} data={data}/>
       )}
