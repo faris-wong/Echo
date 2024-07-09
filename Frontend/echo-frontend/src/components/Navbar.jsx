@@ -81,21 +81,13 @@ const Navbar = (props) => {
             <NavLink to="/Login">
               <div className={styles.profileContainer}>
                 <img
-                  src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100269.jpg?t=st=1720277317~exp=1720280917~hmac=131407d0cd2c4d6d0cd313ee799bb259e9d8255230e789861a0a31f571eb9f8a&w=826"
+                  src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/add5b631521013.56547054d7447.jpg"
                   className={styles.userIcon}
                 ></img>
-                <div className={styles.profileInfo}>Login</div>
-              </div>
-            </NavLink>
-          </li>
-          <li className={styles.profile}>
-            <NavLink to="/Register">
-              <div className={styles.profileContainer}>
-                <img
-                  src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100269.jpg?t=st=1720277317~exp=1720280917~hmac=131407d0cd2c4d6d0cd313ee799bb259e9d8255230e789861a0a31f571eb9f8a&w=826"
-                  className={styles.userIcon}
-                ></img>
-                <div className={styles.profileInfo}>Register</div>
+                <div className={styles.profileInfo}>
+                  <h1 className={styles.userName}>Login/Register</h1>
+                  <p className={styles.status}>Click Here</p>
+                </div>
               </div>
             </NavLink>
           </li>

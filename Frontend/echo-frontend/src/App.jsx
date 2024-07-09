@@ -72,13 +72,10 @@ const App = () => {
                   }
                 />
               )}
-              {!accessToken && !showLogin && (
-                <Route
-                  path="Register"
-                  element={<Register setShowLogin={setShowLogin} />}
-                />
-              )}
             </Routes>
+            {!accessToken && !showLogin && (
+              <Register setShowLogin={setShowLogin} />
+            )}
           </div>
         </UserContext.Provider>
       </QueryClientProvider>
