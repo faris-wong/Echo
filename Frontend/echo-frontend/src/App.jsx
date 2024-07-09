@@ -56,11 +56,7 @@ const App = () => {
               <Route
                 path="Profile"
                 element={
-                  <ProfilePage
-                    communityId={communityID}
-                    authID={authID}
-                    // getProfileByAuth={getProfileByAuth}
-                  />
+                  <ProfilePage communityId={communityID} authID={authID} />
                 }
               />
               {!accessToken && showLogin && (
