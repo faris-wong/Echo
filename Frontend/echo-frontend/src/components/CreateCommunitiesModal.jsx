@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 
 const Overlay = (props) => {
   const [communityName, setCommunityName] = useState("");
+  const [genre, setGenre] = useState("");
+  const [information, setInformation] = useState("");
 
   const createCommunity = async () => {
     try {
@@ -14,6 +16,8 @@ const Overlay = (props) => {
         },
         body: JSON.stringify({
           communityname: communityName,
+          genre: genre,
+          information: information,
         }),
       });
       console.log(response);
@@ -44,6 +48,18 @@ const Overlay = (props) => {
             type="text"
             value={communityName}
             onChange={(e) => setCommunityName(e.target.value)}
+          />
+          <p>Genre: </p>
+          <input
+            type="text"
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+          />
+          <p>General Description: </p>
+          <input
+            type="text"
+            value={information}
+            onChange={(e) => setInformation(e.target.value)}
           />
         </div>
         <button onClick={createCommunity}>Create</button>

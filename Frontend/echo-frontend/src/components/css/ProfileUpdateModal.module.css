@@ -17,7 +17,7 @@
   left: 30%;
   width: 40vw;
   z-index: 50;
-  overflow: hidden;
+  overflow: scroll;
   border-radius: 20px;
   padding: 20px;
   /* text-align: center; */
