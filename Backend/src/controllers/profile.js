@@ -78,6 +78,17 @@ const getProfileById = async (req, res) => {
   }
 };
 
+const getProfileByAccountLink = async (req, res) => {
+  const ProfileInfo = {};
+  if (req.body?.accountlink) ProfileInfo.accountlink = req.body.accountlink;
+  try {
+    const Profile = await ProfileModel.find(ProfileInfo);
+    res.json(Profile);
+  } catch (error) {
+    res.json({ status: "error", msg: "error fetching profile" });
+  }
+};
+
 const createProfile = async (req, res) => {
   try {
     const profile = await AuthModel.findOne({ _id: req.params.id });
@@ -125,6 +136,7 @@ module.exports = {
   getAllProfiles,
   getProfileByInfo,
   getProfileById,
+  getProfileByAccountLink,
   createProfile,
   deleteProfileById,
   updateProfileById,

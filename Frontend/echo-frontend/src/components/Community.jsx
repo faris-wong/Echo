@@ -34,6 +34,20 @@ const Community = (props) => {
       }),
   });
 
+  const {
+    isSuccess: duck,
+    isError: pig,
+    error: dog,
+    isFetching: cow,
+    data: frog,
+  } = useQuery({
+    queryKey: ["profile"],
+    queryFn: async (accountlink) =>
+      await usingFetch("/profileaccount", "POST", {
+        accountlink: props.authID,
+      }),
+  });
+
   const deleteMessage = useMutation({
     mutationFn: async (id) =>
       await usingFetch("/message", "DELETE", {
@@ -57,7 +71,8 @@ const Community = (props) => {
       <div>
         <InputBox
           communityID={params.communityID}
-          profileID={props.profileID}
+          profile={frog}
+
         />
       </div>
       {isFetching && <h1>Loading...</h1>}
@@ -70,7 +85,7 @@ const Community = (props) => {
             <MsgCard
               key={item._id}
               id={item._id}
-              //  username={item.profilelink.username}
+              profile={frog}
               message={item.message}
               timeStamp={item.timeStamp}
               handleDelete={handleDelete}

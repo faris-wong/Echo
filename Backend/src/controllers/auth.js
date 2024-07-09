@@ -80,7 +80,7 @@ const login = async (req, res) => {
       jwtid: uuidv4(),
     });
 
-    res.json({ access, refresh });
+    res.json({id: auth._id, access, refresh });
   } catch (error) {
     console.error(error.message);
     res.json({ status: "error", msg: "unable to login" });
