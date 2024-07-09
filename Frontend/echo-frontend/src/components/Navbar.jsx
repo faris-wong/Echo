@@ -34,7 +34,7 @@ const Navbar = (props) => {
 
   return (
     <>
-      {showCommunitiesModal && (
+      {showCommunitiesModal && userCtx.role === "admin" && (
         <CreateCommunitiesModal
           getCommunities={getCommunities}
           setShowCommunitiesModal={setShowCommunitiesModal}
