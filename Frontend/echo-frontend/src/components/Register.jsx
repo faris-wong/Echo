@@ -11,6 +11,7 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPW, setConfirmPW] = useState("");
   const [userId, setUserId] = useState("");
+  const [modalCP, setModalCP] = useState(false);
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["echo"], // fill whatever necessary here
@@ -28,6 +29,7 @@ const Register = (props) => {
     onSuccess: (data) => {
       if (data && data.id) {
         setUserId(data.id);
+        // auth id
         // Optionally, trigger some other actions based on success
         // props.setShowCreateProfile(true);
       }
