@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import UseFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import CreatingProfile from "./CreatingProfile";
+import ModalCP from "./ModalCP";
 
 const Register = (props) => {
   const usingFetch = UseFetchNT();
@@ -31,7 +31,6 @@ const Register = (props) => {
         setAuthId(data.id);
         // auth id
         // Optionally, trigger some other actions based on success
-        setModalCP(true);
       }
     },
   });
@@ -112,6 +111,7 @@ const Register = (props) => {
               className="row-md-9"
               onClick={() => {
                 mutate();
+                setModalCP(true);
               }}
             >
               Register
@@ -130,6 +130,7 @@ const Register = (props) => {
           <div className="row-md-8"></div>
         </div>
       </div>
+      {modalCP && <ModalCP setModalCP={setModalCP} authId={authId}></ModalCP>}
     </>
   );
 };
