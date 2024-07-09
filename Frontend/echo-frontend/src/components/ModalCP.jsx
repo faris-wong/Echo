@@ -18,6 +18,7 @@ const Overlay = (props) => {
     onSuccess: () => {
       queryClient.invalidateQueries(["profileCreation"]),
         props.setModalCP(false);
+      console.log("username created with ref to " + props.authId);
     },
   });
   return (
