@@ -32,7 +32,7 @@ const MsgCard = (props) => {
           props.timeStamp
         )}`}</span>
       </div>
-      <h4>{props.username}</h4>
+      <h4>{/*put in props.frog*/}</h4>
       <span className={styles.status}>online</span>
       <div className={styles.textBox}>
         <p>{props.message}</p>

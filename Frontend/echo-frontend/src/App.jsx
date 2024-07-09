@@ -18,6 +18,9 @@ const App = () => {
   const [showLogin, setShowLogin] = useState(true);
   const [profileID, setProfileID] = useState("");
   const [communityID, setCommunityID] = useState("");
+  const [showCreateProfile, setShowCreateProfile] = useState(true);
+  const [authID, setAuthID] = useState("");
+
 
   return (
     <>
@@ -29,7 +32,11 @@ const App = () => {
             <Route
               path="community/:communityID"
               element={
-                <Community communityID={communityID} profileID={profileID} />
+                <Community
+                  communityID={communityID}
+                  profileID={profileID}
+                  authID={authID}
+                />
               }
             />
 
@@ -46,7 +53,11 @@ const App = () => {
         >
           {/* using accesstoken to set display if accesstoken is true it will display, basically needs login */}
           {!accessToken && showLogin && (
-            <Login setShowLogin={setShowLogin} setProfileID={setProfileID} />
+            <Login
+              setShowLogin={setShowLogin}
+              setProfileID={setProfileID}
+              setAuthID={setAuthID}
+            />
           )}
           {!accessToken && !showLogin && (
             <Register
