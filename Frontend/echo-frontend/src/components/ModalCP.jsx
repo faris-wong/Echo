@@ -2,20 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import useFetchNT from "../hooks/useFetchNT";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import styles from "./css/ProfileUpdateModal.module.css";
+import styles from "./css/ModalCP.module.css";
 
 const Overlay = (props) => {
   const usingFetch = useFetchNT();
   const queryClient = useQueryClient();
 
-  const { mutate: callUpdateProfile } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: async () =>
-      await usingFetch("/profile/" + props.id, "PATCH", {
-        bio,
+      await usingFetch("/profile/" + props.id, "PUT", {
+        username,
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries(["profile"]),
-        props.setShowUpdateModal(false);
+      queryClient.invalidateQueries(["profileCreation"]),
+        props.setModalCP(false);
     },
   });
   return (
@@ -27,10 +27,9 @@ const Overlay = (props) => {
             onClick={() => props.setShowUpdateModal(false)}
           ></i>
         </div>
-        <h1>Update Profile</h1>
+        Please decide on a Username:
         <div>
-            <p>username: </p>
-            <input type="text" />
+          <input type="text"></input>
         </div>
       </div>
     </div>
@@ -43,11 +42,9 @@ const ModalCP = (props) => {
       {ReactDOM.createPortal(
         <Overlay
           id={props.id}
-          bio={props.bio}
-          status={props.status}
-          community={props.community}
+          authId={props.authId}
           username={props.username}
-          setShowUpdateModal={props.setShowUpdateModal}
+          setModalCP={props.setModalCP}
         />,
         document.querySelector("#root")
       )}
