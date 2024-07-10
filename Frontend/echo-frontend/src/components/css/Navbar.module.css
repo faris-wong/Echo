@@ -55,6 +55,7 @@ nav ul {
   cursor: pointer;
   color: white;
   margin-left: auto;
+  font-size: 15px;
 }
 
 .profile {
@@ -67,12 +68,19 @@ nav ul {
 .profile a:hover {
   background-color: grey;
   padding: 5px;
+  overflow: hidden;
   border-radius: 10px;
+  /* width: 100%; */
 }
 
 .profileContainer {
   display: flex;
+  /* flex-wrap: wrap; */
+  width: 100%;
   align-items: center;
+  padding-left: 20px;
+  margin-left: 1rem;
+  overflow: hidden;
 }
 
 .userIcon {
@@ -88,6 +96,8 @@ nav ul {
 }
 
 .userName {
+  display: flex;
+  flex-wrap: wrap;
   font-size: 1rem;
   margin: 0;
   color: white;

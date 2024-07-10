@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import styles from "./css/ProfileUpdateModal.module.css";
+import styles from "./css/CommunitiesModal.module.css";
 import ReactDOM from "react-dom";
 
 const Overlay = (props) => {
@@ -45,28 +45,36 @@ const Overlay = (props) => {
         <div className={styles.delBtn}>
           <i className="fa-solid fa-xmark" onClick={handleClick}></i>
         </div>
-        <h1>Update Community</h1>
+        <h1 className={styles.modalHeader}>Update Community</h1>
         <div>
-          <p>Community Name: </p>
-          <input
-            type="text"
-            value={communityName}
-            onChange={(e) => setCommunityName(e.target.value)}
-          />
-          <p>Genre: </p>
-          <input
-            type="text"
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-          />
-          <p>General Description: </p>
-          <input
-            type="text"
-            value={information}
-            onChange={(e) => setInformation(e.target.value)}
-          />
+          <div className={styles.modalInputContainer}>
+            <p>Community Name: </p>
+            <input
+              type="text"
+              value={communityName}
+              onChange={(e) => setCommunityName(e.target.value)}
+            />
+          </div>
+          <div className={styles.modalInputContainer}>
+            <p>Genre: </p>
+            <input
+              type="text"
+              value={genre}
+              onChange={(e) => setGenre(e.target.value)}
+            />
+          </div>
+          <div className={styles.modalInputContainer}>
+            <p>General Description: </p>
+            <input
+              type="text"
+              value={information}
+              onChange={(e) => setInformation(e.target.value)}
+            />
+          </div>
         </div>
-        <button onClick={updateCommunity}>Update</button>
+        <button className={styles.updateBtn} onClick={updateCommunity}>
+          Update
+        </button>
       </div>
     </div>
   );

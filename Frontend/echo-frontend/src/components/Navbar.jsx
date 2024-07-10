@@ -36,7 +36,6 @@ const Navbar = (props) => {
     getCommunities();
   }, []);
 
-
   const handleClick = (id) => {
     setShowUpdateCommunitiesModal(true);
     setCommunityId(id);
@@ -54,8 +53,6 @@ const Navbar = (props) => {
         userCtx.accessToken
       ),
   });
-
-
 
   return (
     <>
@@ -119,8 +116,12 @@ const Navbar = (props) => {
                       className={styles.userIcon}
                     ></img>
                     <div className={styles.profileInfo}>
-                     {isSuccess &&( <h1 className={styles.userName}>{data[0].username}</h1>)}
-                      {isSuccess && (<p className={styles.status}>{data[0].status}</p>)}
+                      {isSuccess && (
+                        <h1 className={styles.userName}>{data[0].username}</h1>
+                      )}
+                      {isSuccess && (
+                        <p className={styles.status}>{data[0].status}</p>
+                      )}
                     </div>
                   </div>
                 </NavLink>
