@@ -106,11 +106,7 @@ const Community = (props) => {
   return (
     <>
       <div className={styles.header}>
-        {successful && (
-          <h1>
-            {chicken.communityname} + {props.authID} + {JSON.stringify(frog)}
-          </h1>
-        )}
+        {successful && <h1>{chicken.communityname}</h1>}
       </div>
       <div className={styles.msgContainer}></div>
       <div>

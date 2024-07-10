@@ -24,6 +24,7 @@ const InputBox = (props) => {
     onSuccess: () => {
       setMessageText("");
       queryClient.invalidateQueries(["msgs"]);
+      window.scrollTo(0, document.body.scrollHeight);
     },
   });
 

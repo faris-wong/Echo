@@ -8,6 +8,9 @@ const {
   deleteMessages,
 } = require("../controllers/messages");
 
+const { validateMessageData } = require("../validators/messages");
+const checkErrors = require("../validators/checkErrors");
+
 router.get("/message", getMessages);
 router.post("/messagebycommunity", getMessageByCommunity);
 router.put("/message", createMessages);
