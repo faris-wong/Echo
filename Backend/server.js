@@ -34,9 +34,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", profile, messages, community, roles);
 app.use("/auth", auth);
 
-// Serve static files
-app.use(express.static(path.join(__dirname, "public")));
-
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
