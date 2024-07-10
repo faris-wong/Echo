@@ -35,12 +35,9 @@ app.use("/", profile, messages, community, roles);
 app.use("/auth", auth);
 
 // Serve static files
-app.use(
-  "/public/unlockSound.mp3",
-  express.static(path.join(__dirname, "public"))
-);
+app.use(express.static(path.join(__dirname, "public")));
 
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
