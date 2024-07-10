@@ -24,6 +24,8 @@ const ProfilePage = (props) => {
       ),
   });
 
+  const gamesList = data[0].games.split(",");
+
   return (
     <>
       {showUpdateModal && (
@@ -37,7 +39,7 @@ const ProfilePage = (props) => {
       {isError && <div>{error.message}</div>}
       {isSuccess && (
         <div className={styles.pageContainer}>
-          <div className={styles.bio}>
+          <div className={styles.profile}>
             <div className={styles.avatar}>
               <img
                 src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100269.jpg?t=st=1720277317~exp=1720280917~hmac=131407d0cd2c4d6d0cd313ee799bb259e9d8255230e789861a0a31f571eb9f8a&w=826"
@@ -55,16 +57,18 @@ const ProfilePage = (props) => {
             </h1>
             <span className={styles.status}>{data[0].status}</span>
           </div>
-          <div className={styles.gamesBio}>
+          <div className={styles.playerBio}>
             <h2>Bio</h2>
             <div>{data[0].bio}</div>
           </div>
-          <div className={styles.commBio}>
+          <div className={styles.games}>
             <h2>Games played:</h2>
             <div>
-              
-                <p>{data[0].games}</p>
-              
+              <ul>
+                {gamesList.map((game, index) => (
+                  <li key={index}>{game.trim()}</li> 
+                ))}
+              </ul>
             </div>
           </div>
         </div>

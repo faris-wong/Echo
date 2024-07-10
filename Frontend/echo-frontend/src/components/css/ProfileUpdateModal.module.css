@@ -16,7 +16,7 @@
   bottom: 30vh;
   left: 30%;
   width: 40vw;
-  height: 46vh;
+  height: 50vh;
   z-index: 50;
   overflow-x: hidden;
   overflow-y: auto;
@@ -41,8 +41,6 @@
 
 p {
   font-weight: 200;
-  /* margin-right: 10px; */
-  /* min-width: 150px; */
   left: 30px;
   position: relative;
   text-align: left;
@@ -52,7 +50,6 @@ p {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-  
 }
 
 input, textarea, select {
@@ -61,6 +58,10 @@ input, textarea, select {
   border-radius: 5px;
   width: 50%;
   height: 50%;
+}
+
+textarea {
+  height: 70px;
 }
 
 .createBtn {
