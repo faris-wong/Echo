@@ -2,11 +2,15 @@ import { React, useState, useEffect, useContext } from "react";
 import styles from "./css/Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import CreateCommunitiesModal from "./CreateCommunitiesModal";
+import UpdateCommunitiesModal from "./UpdateCommunitiesModal";
 import user from "../context/user";
 
 const Navbar = (props) => {
   const [communitiesList, setCommunitiesList] = useState([]);
   const [showCommunitiesModal, setShowCommunitiesModal] = useState(false);
+  const [showUpdateCommunitiesModal, setShowUpdateCommunitiesModal] =
+    useState(false);
+  const [communityId, setCommunityId] = useState("");
   const userCtx = useContext(user);
 
   const getCommunities = async () => {
@@ -32,8 +36,21 @@ const Navbar = (props) => {
     getCommunities();
   }, []);
 
+  const handleClick = (id) => {
+    setShowUpdateCommunitiesModal(true);
+    setCommunityId(id);
+  };
+
   return (
     <>
+      {showUpdateCommunitiesModal && userCtx.role === "admin" && (
+        <UpdateCommunitiesModal
+          getCommunities={getCommunities}
+          setShowUpdateCommunitiesModal={setShowUpdateCommunitiesModal}
+          communityId={communityId}
+        />
+      )}
+
       {showCommunitiesModal && userCtx.role === "admin" && (
         <CreateCommunitiesModal
           getCommunities={getCommunities}
@@ -52,9 +69,12 @@ const Navbar = (props) => {
             <>
               <li>
                 <div className={styles.communitiesList}>
-                  COMMUNITIES
-                  <div onClick={() => setShowCommunitiesModal(true)}>
-                    <i class="fa fa-plus"></i>
+                  <span>COMMUNITIES</span>
+                  <div
+                    className={styles.addCommunityIcon}
+                    onClick={() => setShowCommunitiesModal(true)}
+                  >
+                    <i className="fa fa-plus"></i>
                   </div>
                 </div>
                 <ul>
@@ -62,14 +82,17 @@ const Navbar = (props) => {
                     const toVar = "/community/" + community._id;
 
                     return (
-                      <li key={community._id}>
+                      <li key={community._id} className={styles.communityItem}>
                         <NavLink to={toVar}>{community.communityname}</NavLink>
+                        <div
+                          className={styles.updateCommunityIcon}
+                          onClick={() => handleClick(community._id)}
+                        >
+                          <i className="far fa-edit"></i>
+                        </div>
                       </li>
                     );
                   })}
-                  {/* <button onClick={() => setShowCommunitiesModal(true)}>
-                    create community button modal
-                  </button> */}
                 </ul>
               </li>
               <li className={styles.profile}>
