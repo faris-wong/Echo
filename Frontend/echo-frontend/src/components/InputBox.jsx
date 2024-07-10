@@ -34,10 +34,10 @@ const InputBox = (props) => {
     }
   };
   useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown); // runs on mount
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown); // clean up function
     };
   }, []);
 
