@@ -35,7 +35,9 @@ app.use("/", profile, messages, community, roles);
 app.use("/auth", auth);
 
 // static things here
-let options = {};
+let options = {
+  
+};
 app.use(express.static("public", options));
 // Serve static files
 app.use(
