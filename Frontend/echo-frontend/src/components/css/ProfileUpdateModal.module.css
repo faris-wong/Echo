@@ -10,20 +10,19 @@
 
 .modal {
   position: absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  margin: auto;
   background: rgb(139, 89, 255);
   color: white;
-  width: 60vw;
+  top: 30vh;
+  bottom: 30vh;
+  left: 30%;
+  width: 40vw;
+  height: 46vh;
   z-index: 50;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 20px;
   padding: 20px;
+  text-align: center;
 }
 
 .delBtn {
@@ -33,19 +32,58 @@
   cursor: pointer;
 }
 
-.username {
-  width: 45%;
-  display: inline-block;
+.modalHeader {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-style: italic;
 }
 
-.status , select, option {
-  display: inline-block;
-  width: 45%;
-  height: 30px;
+p {
+  font-weight: 200;
+  /* margin-right: 10px; */
+  /* min-width: 150px; */
+  left: 30px;
+  position: relative;
+  text-align: left;
 }
 
-.bio input {
+.modalInputContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  
+}
+
+input, textarea, select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50%;
+  height: 50%;
+}
+
+.createBtn {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
   width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.updateBtn {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  width: auto;
+  height: 35px;
+  padding: 10px;
+  line-height: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 *::-webkit-scrollbar {

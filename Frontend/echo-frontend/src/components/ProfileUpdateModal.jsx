@@ -48,21 +48,20 @@ const Overlay = (props) => {
             onClick={() => props.setShowUpdateModal(false)}
           ></i>
         </div>
-        <h1>Update Profile</h1>
-        <div className="row">
-          <div className="col-md-2">Username:</div>
+        <h1 className={styles.modalHeader}>Update Profile</h1>
+        <div className={styles.modalInputContainer}>
+          <p>Username:</p>
           <input
             type="text"
             value={form.username}
-            className="col-md-3"
             onChange={(e) =>
               setForm((prev) => ({ ...prev, username: e.target.value }))
             }
           />
-
-          <div className="col-md-2">Status:</div>
+        </div>
+        <div className={styles.modalInputContainer}>
+          <p>Status:</p>
           <select
-            className="col-md-3"
             value={form.status}
             onChange={(e) =>
               setForm((prev) => ({ ...prev, status: e.target.value }))
@@ -74,23 +73,21 @@ const Overlay = (props) => {
             <option value="Offline">Offline</option>
           </select>
         </div>
-        <div className="col-md-12">
-          Bio:
-          <input
-            type="text"
-            className="col-md-12"
+        <div className={styles.modalInputContainer}>
+          <p>Bio:</p>
+          <textarea
             value={form.bio}
+            row={3}
             onChange={(e) =>
               setForm((prev) => ({ ...prev, bio: e.target.value }))
             }
           />
         </div>
 
-        <div className="col-md-12">
-          Games played:
-          <input
-            type="text"
-            className="col-md-12"
+        <div className={styles.modalInputContainer}>
+          <p>Games played:</p>
+          <textarea
+            row={3}
             value={form.games}
             onChange={(e) =>
               setForm((prev) => ({ ...prev, games: e.target.value }))
@@ -98,7 +95,7 @@ const Overlay = (props) => {
           />
         </div>
 
-        <button onClick={updateBtn}>update</button>
+        <button className={styles.updateBtn} onClick={updateBtn}>update</button>
       </div>
     </div>
   );

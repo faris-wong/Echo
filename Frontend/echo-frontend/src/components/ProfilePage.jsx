@@ -51,7 +51,7 @@ const ProfilePage = (props) => {
               </div>
             </div>
             <h1>
-              Hey, <span className={styles.userName}>{data[0].username}</span>
+              Hey, <span className={styles.userName}>{data[0].username}.</span>
             </h1>
             <span className={styles.status}>{data[0].status}</span>
           </div>
