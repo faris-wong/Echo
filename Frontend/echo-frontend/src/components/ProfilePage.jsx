@@ -25,10 +25,10 @@ const ProfilePage = (props) => {
   });
 
   let gamesList = [];
-  if (data && data[0] && data[0].games !== undefined) {
-    gamesList = data[0].games.split(",");
-  } else {
+  if (data == undefined) {
     gamesList = []; 
+  } else {
+    gamesList = data[0].games.split(",");
   }
 
   return (
