@@ -68,21 +68,7 @@ const Community = (props) => {
       ),
   });
 
-  // const getProfileByAuth = useMutation({
-  //   mutationFn: async () => {
-  //     return await usingFetch("/profileaccount", "POST", {
-  //       accountlink: props.authID,
-  //     });
-  //   },
-  //   // onSuccess: () => {
-  //   //   queryClient.invalidateQueries(["msgs", params.communityID]);
-  //   // },
-  // });
-
-  // useEffect(() => {
-  //   console.log(props.authID);
-  //   getProfileByAuth.mutate(props.authID);
-  // }, []);
+  
 
   const deleteMessage = useMutation({
     mutationFn: async (id) =>
