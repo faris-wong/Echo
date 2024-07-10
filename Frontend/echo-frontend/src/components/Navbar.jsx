@@ -72,7 +72,7 @@ const Navbar = (props) => {
         />
       )}
       <nav>
-        <NavLink to="/" className={styles.title}>
+        <NavLink to="/Home" className={styles.title}>
           <div className={styles.logo}>
           <img src={EchoImage} alt="Echo Logo" />
           </div>
