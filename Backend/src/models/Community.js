@@ -5,8 +5,6 @@ const CommunitySchema = new mongoose.Schema(
     communityname: { type: String, require: true },
     genre: {
       type: String,
-      enum: ["mmo", "rpg", "action", "puzzle"],
-      default: "mmo",
     },
     information: { type: String, require: false, default: "", maxLength: 1000 },
     created_at: { type: Date, default: Date.now },

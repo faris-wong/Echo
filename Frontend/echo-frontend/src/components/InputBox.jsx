@@ -3,7 +3,7 @@ import styles from "./css/InputBox.module.css";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import useFetchNT from "../hooks/useFetchNT";
-import MP3File from "../../public/whoosh.mp3";
+import MP3File from "../sounds/whoosh.mp3";
 
 const InputBox = (props) => {
   // sound file
