@@ -1,7 +1,7 @@
 .window {
   bottom: 0;
   margin: 10px;
-  width: 98%;
+  width: 91%;
   position: fixed;
   z-index: 20;
 }
@@ -10,7 +10,7 @@
   height: auto;
   /* left: 50%; */
   /* transform: translate(-50%); */
-  width: 81vw;
+  width: 90%;
   background-color: rgb(27, 27, 27);
   border: 1px solid rgb(139, 89, 255);
   border-radius: 8px;
@@ -19,7 +19,7 @@
 }
 
 .container input {
-  width: 97%;
+  width: 98%;
   background: none;
   border: none;
   color: white;

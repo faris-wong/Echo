@@ -76,6 +76,7 @@ nav ul {
 
 .profileContainer {
   display: flex;
+
   /* flex-wrap: wrap; */
   width: 200px;
   align-items: center;

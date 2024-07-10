@@ -14,7 +14,7 @@ const Overlay = (props) => {
     username: props.username,
     status: props.status,
     bio: props.bio,
-    community: props.community,
+    games: props.games,
   });
 
   const mutate = useMutation({
@@ -26,7 +26,7 @@ const Overlay = (props) => {
           username: form.username,
           bio: form.bio,
           status: form.status,
-          community: form.community,
+          games: form.games,
         },
         userCtx.accessToken
       ),
@@ -49,46 +49,55 @@ const Overlay = (props) => {
           ></i>
         </div>
         <h1>Update Profile</h1>
-        <div>
-          <p>username: </p>
+        <div className="row">
+          <div className="col-md-2">Username:</div>
           <input
             type="text"
             value={form.username}
+            className="col-md-3"
             onChange={(e) =>
               setForm((prev) => ({ ...prev, username: e.target.value }))
             }
           />
+
+          <div className="col-md-2">Status:</div>
+          <select
+            className="col-md-3"
+            value={form.status}
+            onChange={(e) =>
+              setForm((prev) => ({ ...prev, status: e.target.value }))
+            }
+          >
+            <option value="Online">Online</option>
+            <option value="In-game">In-game</option>
+            <option value="AFK">AFK</option>
+            <option value="Offline">Offline</option>
+          </select>
         </div>
-        <div>
-          <p>bio: </p>
+        <div className="col-md-12">
+          Bio:
           <input
             type="text"
+            className="col-md-12"
             value={form.bio}
             onChange={(e) =>
               setForm((prev) => ({ ...prev, bio: e.target.value }))
             }
           />
         </div>
-        <div>
-          <p>status: </p>
+
+        <div className="col-md-12">
+          Games played:
           <input
             type="text"
-            value={form.status}
+            className="col-md-12"
+            value={form.games}
             onChange={(e) =>
-              setForm((prev) => ({ ...prev, status: e.target.value }))
+              setForm((prev) => ({ ...prev, games: e.target.value }))
             }
           />
         </div>
-        <div>
-          <p>community: </p>
-          <input
-            type="text"
-            value={form.community}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, community: e.target.value }))
-            }
-          />
-        </div>
+
         <button onClick={updateBtn}>update</button>
       </div>
     </div>
@@ -103,7 +112,7 @@ const ProfileUpdateModal = (props) => {
           id={props.data[0]._id}
           bio={props.data[0].bio}
           status={props.data[0].status}
-          community={props.data[0].community}
+          games={props.data[0].games}
           username={props.data[0].username}
           setShowUpdateModal={props.setShowUpdateModal}
         />,

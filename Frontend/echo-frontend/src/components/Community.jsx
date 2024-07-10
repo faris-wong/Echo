@@ -1,7 +1,7 @@
 import { React, useState, useEffect, useContext } from "react";
 import MsgCard from "./MsgCard";
 import InputBox from "./InputBox";
-import styles from "./css/ChatRoom.module.css";
+import styles from "./css/Community.module.css";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
 import { useParams } from "react-router-dom";
@@ -108,10 +108,8 @@ const Community = (props) => {
       <div className={styles.header}>
         {successful && <h1>{chicken.communityname}</h1>}
       </div>
-      <div className={styles.msgContainer}></div>
-      <div>
-        <InputBox communityID={params.communityID} profile={frog} />
-      </div>
+      <div className={styles.msgContainer}>
+      
       {isFetching && <h1>Loading...</h1>}
 
       {isError && <div>{error.message}</div>}
@@ -130,6 +128,10 @@ const Community = (props) => {
             />
           );
         })}
+        </div>
+        <div>
+        <InputBox communityID={params.communityID} profile={frog} />
+      </div>
     </>
   );
 };
