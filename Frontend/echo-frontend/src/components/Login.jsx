@@ -4,7 +4,7 @@ import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import mp3File from "../../public/unlockSound.mp3";
+import mp3File from "../sounds/unlockSound.mp3";
 
 const Login = (props) => {
   // sound file
