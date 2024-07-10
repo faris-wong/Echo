@@ -28,6 +28,19 @@ const InputBox = (props) => {
     },
   });
 
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      mutate();
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className={styles.window}>
       <div className={styles.container}>
