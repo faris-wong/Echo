@@ -36,7 +36,16 @@ app.use("/auth", auth);
 
 // static things here
 let options = {
-  
+  dotfiles: "ignore", //allow, deny, ignore
+  etag: true,
+  extensions: ["htm", "html"],
+  index: false, // to disable directory indexing
+  maxAge: "3d",
+  redirect: false,
+  setHeaders: function (res, path, stat) {
+    //add this header to all static responses
+    res.set("x-timestamp", Date.now());
+  },
 };
 app.use(express.static("public", options));
 // Serve static files
