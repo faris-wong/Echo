@@ -17,7 +17,6 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  // const [authID, setAuthID] = useState("");
 
   const { isError, error, data, refetch } = useQuery({
     queryKey: ["login"],

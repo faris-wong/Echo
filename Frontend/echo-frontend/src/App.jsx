@@ -23,18 +23,6 @@ const App = () => {
   const [showCreateProfile, setShowCreateProfile] = useState(true);
   const [authID, setAuthID] = useState("");
 
-  // const getProfileByAuth = useMutation({
-  //   mutationFn: async () => {
-  //     return await usingFetch("/profileaccount", "POST", {
-  //       accountlink: authID,
-  //     });
-  //   },
-  // });
-
-  // useEffect(() => {
-  //   getProfileByAuth.mutate(authID);
-  // }, []);
-
   return (
     <>
       <QueryClientProvider client={queryClient}>
