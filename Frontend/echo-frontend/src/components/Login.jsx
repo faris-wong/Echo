@@ -4,6 +4,7 @@ import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import Sound from "./Sound";
 
 const Login = (props) => {
   const usingFetch = useFetch();
@@ -107,6 +108,7 @@ const Login = (props) => {
           Register
         </button>
         <div className="col-md-3"></div>
+        <Sound></Sound>
       </div>
     </>
   );
