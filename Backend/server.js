@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -36,9 +37,11 @@ app.use("/auth", auth);
 // static things here
 let options = {};
 app.use(express.static("public", options));
-// Serve static files (including sounds) from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
-
+// Serve static files
+app.use(
+  // "/public/unlockSound.mp3",
+  express.static(path.join(__dirname, "public"))
+);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
