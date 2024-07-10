@@ -34,27 +34,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", profile, messages, community, roles);
 app.use("/auth", auth);
 
-// static things here
-let options = {
-  dotfiles: "ignore", //allow, deny, ignore
-  etag: true,
-  extensions: ["htm", "html"],
-  index: false, // to disable directory indexing
-  maxAge: "3d",
-  redirect: false,
-  setHeaders: function (res, path, stat) {
-    //add this header to all static responses
-    res.set("x-timestamp", Date.now());
-  },
-};
-app.use(express.static("public", options));
 // Serve static files
 app.use(
-  // "/public/unlockSound.mp3",
+  "/public/unlockSound.mp3",
   express.static(path.join(__dirname, "public"))
 );
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5173;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
