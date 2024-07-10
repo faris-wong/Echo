@@ -116,3 +116,15 @@ nav ul {
 li a {
   color: white;
 }
+
+.logo {
+  display: flex;
+}
+
+.logo img {
+  max-width: 100%;
+  height: 80px;
+  display: block;
+  object-fit: contain;
+  border-radius: 20px;
+}

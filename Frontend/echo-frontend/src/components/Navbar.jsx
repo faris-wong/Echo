@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import CreateCommunitiesModal from "./CreateCommunitiesModal";
 import UpdateCommunitiesModal from "./UpdateCommunitiesModal";
 import user from "../context/user";
+import EchoImage from '../assets/Echo.jpg';
 
 const Navbar = (props) => {
   const [communitiesList, setCommunitiesList] = useState([]);
@@ -72,7 +73,9 @@ const Navbar = (props) => {
       )}
       <nav>
         <NavLink to="/" className={styles.title}>
-          ECHO
+          <div className={styles.logo}>
+          <img src={EchoImage} alt="Echo Logo" />
+          </div>
         </NavLink>
         <ul className={styles.navlist}>
           <li className={styles.home}>
