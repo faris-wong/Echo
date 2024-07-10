@@ -70,14 +70,26 @@ const Overlay = (props) => {
           />
         </div>
         <div>
+          <div className="row">
+            <div className="col-md-3"></div>
+            <div className="col-md-3">Status</div>
+
+            <div className="col-md-3"></div>
+          </div>
           <p>status: </p>
-          <input
-            type="text"
+
+          <select
             value={form.status}
+            className="col-md-3"
             onChange={(e) =>
               setForm((prev) => ({ ...prev, status: e.target.value }))
             }
-          />
+          >
+            <option value="Online">Online</option>
+            <option value="In-game">In-game</option>
+            <option value="AFK">AFK</option>
+            <option value="Offline">Offline</option>
+          </select>
         </div>
         <div>
           <p>community: </p>
