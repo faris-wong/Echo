@@ -4,9 +4,14 @@ import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import Sound from "./Sound";
+import mp3File from "../../public/unlockSound.mp3";
 
 const Login = (props) => {
+  // sound file
+  const playAudio = () => {
+    const audio = new Audio(mp3File);
+    audio.play();
+  };
   const usingFetch = useFetch();
   const userCtx = useContext(UserContext);
   const [email, setEmail] = useState("");
@@ -35,6 +40,7 @@ const Login = (props) => {
       userCtx.setRole(decoded.role);
       // <Navigate to="/Home"></Navigate>;
       navigate("Home");
+      playAudio();
     }
   }, [data]);
 
@@ -108,7 +114,6 @@ const Login = (props) => {
           Register
         </button>
         <div className="col-md-3"></div>
-        <Sound></Sound>
       </div>
     </>
   );
