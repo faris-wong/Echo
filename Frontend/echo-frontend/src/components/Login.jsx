@@ -34,7 +34,6 @@ const Login = (props) => {
   useEffect(() => {
     if (data) {
       props.setAuthID(data.id);
-      console.log(data.id);
       userCtx.setAccessToken(data.access);
       const decoded = jwtDecode(data.access);
       userCtx.setRole(decoded.role);

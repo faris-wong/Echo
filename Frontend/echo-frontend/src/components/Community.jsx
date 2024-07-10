@@ -116,7 +116,6 @@ const Community = (props) => {
 
       {isSuccess &&
         data.map((item) => {
-          console.log(item);
           return (
             <MsgCard
               key={item._id}
