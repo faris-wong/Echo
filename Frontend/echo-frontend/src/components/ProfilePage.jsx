@@ -60,11 +60,11 @@ const ProfilePage = (props) => {
             <div>{data[0].bio}</div>
           </div>
           <div className={styles.commBio}>
-            <h2>Your communities:</h2>
+            <h2>Games played:</h2>
             <div>
-              <ul>
-                <li>{data[0].community}</li>
-              </ul>
+              
+                <p>{data[0].games}</p>
+              
             </div>
           </div>
         </div>

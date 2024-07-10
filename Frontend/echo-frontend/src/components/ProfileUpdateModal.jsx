@@ -14,7 +14,7 @@ const Overlay = (props) => {
     username: props.username,
     status: props.status,
     bio: props.bio,
-    community: props.community,
+    games: props.games,
   });
 
   const mutate = useMutation({
@@ -26,7 +26,7 @@ const Overlay = (props) => {
           username: form.username,
           bio: form.bio,
           status: form.status,
-          community: form.community,
+          games: form.games,
         },
         userCtx.accessToken
       ),
@@ -87,13 +87,13 @@ const Overlay = (props) => {
         </div>
 
         <div className="col-md-12">
-          Your:
+          Games played:
           <input
             type="text"
             className="col-md-12"
-            value={form.community}
+            value={form.games}
             onChange={(e) =>
-              setForm((prev) => ({ ...prev, community: e.target.value }))
+              setForm((prev) => ({ ...prev, games: e.target.value }))
             }
           />
         </div>
@@ -112,7 +112,7 @@ const ProfileUpdateModal = (props) => {
           id={props.data[0]._id}
           bio={props.data[0].bio}
           status={props.data[0].status}
-          community={props.data[0].community}
+          games={props.data[0].games}
           username={props.data[0].username}
           setShowUpdateModal={props.setShowUpdateModal}
         />,

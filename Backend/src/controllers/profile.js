@@ -57,7 +57,7 @@ const getProfileByInfo = async (req, res) => {
   const ProfileInfo = {};
   if (req.body?.id) ProfileInfo.id = req.body.id;
   if (req.body?.username) ProfileInfo.username = req.body.username;
-  if (req.body?.community) ProfileInfo.community = req.body.community;
+  if (req.body?.games) ProfileInfo.community = req.body.games;
 
   try {
     const allProfiles = await ProfileModel.find(ProfileInfo);
@@ -122,7 +122,7 @@ const updateProfileById = async (req, res) => {
       username: req.body.username,
       bio: req.body.bio,
       status: req.body.status,
-      community: req.body.community,
+      games: req.body.games,
     };
     await ProfileModel.findByIdAndUpdate(req.params.id, updateProfile);
     res.json({ status: "ok", msg: "profile updated" });
