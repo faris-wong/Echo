@@ -33,6 +33,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", profile, messages, community, roles);
 app.use("/auth", auth);
 
+// static things here
+let options = {};
+app.use(express.static("public", options));
+// Serve static files (including sounds) from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
