@@ -1,4 +1,5 @@
 import { React, useState, useEffect, useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
 import styles from "./css/Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import CreateCommunitiesModal from "./CreateCommunitiesModal";
@@ -22,7 +23,6 @@ const Navbar = (props) => {
       }
       const communitydata = await response.json();
       setCommunitiesList(communitydata);
-      console.log(communitydata);
     } catch (error) {
       console.log(error.message);
     }
@@ -31,6 +31,20 @@ const Navbar = (props) => {
   useEffect(() => {
     getCommunities();
   }, []);
+
+  const { isSuccess, isError, error, isFetching, data } = useQuery({
+    queryKey: ["profile"],
+    queryFn: async () =>
+      await usingFetch(
+        "/profileaccount",
+        "POST",
+        {
+          accountlink: props.authID,
+        },
+        userCtx.accessToken
+      ),
+  });
+
 
   return (
     <>
@@ -80,8 +94,8 @@ const Navbar = (props) => {
                       className={styles.userIcon}
                     ></img>
                     <div className={styles.profileInfo}>
-                      <h1 className={styles.userName}>User1234</h1>
-                      <p className={styles.status}>Online</p>
+                     {isSuccess &&( <h1 className={styles.userName}>{data[0].username}</h1>)}
+                      {isSuccess && (<p className={styles.status}>{data[0].status}</p>)}
                     </div>
                   </div>
                 </NavLink>

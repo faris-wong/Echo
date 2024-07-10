@@ -42,7 +42,7 @@ const App = () => {
           value={{ accessToken, setAccessToken, role, setRole }}
         >
           {/* using accesstoken to set display if accesstoken is true it will display, basically needs login */}
-          <Navbar />
+          <Navbar authID={authID} />
           <div className="content">
             <Routes>
               <Route path="Home" element={<Newsfeed />} />
