@@ -1,16 +1,15 @@
 import React from "react";
+import mp3File from "../../public/unlockSound.mp3";
 
 const Sound = () => {
-  const playSound = () => {
-    const audio = new Audio("/unlockSound.mp3");
-    audio.play().catch((error) => {
-      console.error("Failed to play sound:", error);
-    });
+  const playAudio = () => {
+    const audio = new Audio(mp3File);
+    audio.play();
   };
 
   return (
     <div>
-      <button onClick={() => playSound()}>Play sound</button>
+      <button onClick={() => playAudio()}>Play sound</button>
     </div>
   );
 };
