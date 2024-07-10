@@ -24,11 +24,13 @@ const ProfilePage = (props) => {
       ),
   });
 
-
   return (
     <>
       {showUpdateModal && (
-        <ProfileUpdateModal setShowUpdateModal={setShowUpdateModal} data={data}/>
+        <ProfileUpdateModal
+          setShowUpdateModal={setShowUpdateModal}
+          data={data}
+        />
       )}
       {isFetching && <h1>Loading...</h1>}
 
@@ -36,10 +38,18 @@ const ProfilePage = (props) => {
       {isSuccess && (
         <div className={styles.pageContainer}>
           <div className={styles.bio}>
-            <img
-              src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100269.jpg?t=st=1720277317~exp=1720280917~hmac=131407d0cd2c4d6d0cd313ee799bb259e9d8255230e789861a0a31f571eb9f8a&w=826"
-              className={styles.avatar}
-            />
+            <div className={styles.avatar}>
+              <img
+                src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100269.jpg?t=st=1720277317~exp=1720280917~hmac=131407d0cd2c4d6d0cd313ee799bb259e9d8255230e789861a0a31f571eb9f8a&w=826"
+                className={styles.avatar}
+              ></img>
+              <div className={styles.updateGameBtn}>
+                <i
+                  className="fa-regular fa-pen-to-square"
+                  onClick={() => setShowUpdateModal(true)}
+                ></i>
+              </div>
+            </div>
             <h1>
               Hey, <span className={styles.userName}>{data[0].username}</span>
             </h1>
@@ -48,16 +58,14 @@ const ProfilePage = (props) => {
           <div className={styles.gamesBio}>
             <h2>Bio</h2>
             <div>{data[0].bio}</div>
-            <div className={styles.updateGameBtn}>
-              <i
-                className="fa-regular fa-pen-to-square"
-                onClick={() => setShowUpdateModal(true)}
-              ></i>
-            </div>
           </div>
           <div className={styles.commBio}>
-            <h2>Your Communities</h2>
-            <div>{data[0].communities}</div>
+            <h2>Your communities:</h2>
+            <div>
+              <ul>
+                <li>{data[0].community}</li>
+              </ul>
+            </div>
           </div>
         </div>
       )}

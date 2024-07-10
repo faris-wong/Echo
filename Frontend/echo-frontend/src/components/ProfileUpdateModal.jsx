@@ -49,38 +49,21 @@ const Overlay = (props) => {
           ></i>
         </div>
         <h1>Update Profile</h1>
-        <div>
-          <p>username: </p>
+        <div className="row">
+          <div className="col-md-2">Username:</div>
           <input
             type="text"
             value={form.username}
+            className="col-md-3"
             onChange={(e) =>
               setForm((prev) => ({ ...prev, username: e.target.value }))
             }
           />
-        </div>
-        <div>
-          <p>bio: </p>
-          <input
-            type="text"
-            value={form.bio}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, bio: e.target.value }))
-            }
-          />
-        </div>
-        <div>
-          <div className="row">
-            <div className="col-md-3"></div>
-            <div className="col-md-3">Status</div>
 
-            <div className="col-md-3"></div>
-          </div>
-          <p>status: </p>
-
+          <div className="col-md-2">Status:</div>
           <select
-            value={form.status}
             className="col-md-3"
+            value={form.status}
             onChange={(e) =>
               setForm((prev) => ({ ...prev, status: e.target.value }))
             }
@@ -91,16 +74,30 @@ const Overlay = (props) => {
             <option value="Offline">Offline</option>
           </select>
         </div>
-        <div>
-          <p>community: </p>
+        <div className="col-md-12">
+          Bio:
           <input
             type="text"
+            className="col-md-12"
+            value={form.bio}
+            onChange={(e) =>
+              setForm((prev) => ({ ...prev, bio: e.target.value }))
+            }
+          />
+        </div>
+
+        <div className="col-md-12">
+          Your:
+          <input
+            type="text"
+            className="col-md-12"
             value={form.community}
             onChange={(e) =>
               setForm((prev) => ({ ...prev, community: e.target.value }))
             }
           />
         </div>
+
         <button onClick={updateBtn}>update</button>
       </div>
     </div>

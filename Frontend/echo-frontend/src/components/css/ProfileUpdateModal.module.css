@@ -9,18 +9,21 @@
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  margin: auto;
   background: rgb(139, 89, 255);
   color: white;
-  top: 30vh;
-  bottom: 30vh;
-  left: 30%;
-  width: 40vw;
+  width: 60vw;
   z-index: 50;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   border-radius: 20px;
   padding: 20px;
-  /* text-align: center; */
 }
 
 .delBtn {
@@ -28,4 +31,35 @@
   right: 11.5px;
   top: 3.5px;
   cursor: pointer;
+}
+
+.username {
+  width: 45%;
+  display: inline-block;
+}
+
+.status , select, option {
+  display: inline-block;
+  width: 45%;
+  height: 30px;
+}
+
+.bio input {
+  width: 100%;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(27, 27, 27);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(44, 44, 44);
+  border-radius: 20px;
 }
