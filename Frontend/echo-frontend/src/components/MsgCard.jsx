@@ -59,9 +59,9 @@ const MsgCard = (props) => {
       </div>
       <h4>{props.profile}</h4>
       <span className={styles.status}>online</span>
-      <div className={styles.textBox}>
-        <p>{props.message}</p>
-      </div>
+      
+        <div>{props.message}</div>
+      
     </div>
   );
 };
