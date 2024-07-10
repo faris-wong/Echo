@@ -13,7 +13,7 @@ const checkErrors = require("../validators/checkErrors");
 
 router.get("/message", getMessages);
 router.post("/messagebycommunity", getMessageByCommunity);
-router.put("/message", createMessages);
+router.put("/message", validateMessageData, checkErrors, createMessages);
 router.patch("/message", updateMessages);
 router.delete("/message", deleteMessages);
 
