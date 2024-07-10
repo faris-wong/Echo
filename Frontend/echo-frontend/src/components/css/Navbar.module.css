@@ -36,6 +36,25 @@ nav ul {
 
 .communitiesList {
   margin-top: 2rem;
+  font-size: 10px;
+  font-weight: bolder;
+  display: flex;
+}
+
+.communityItem {
+  display: flex;
+}
+
+.addCommunityIcon {
+  cursor: pointer;
+  color: white;
+  margin-left: auto;
+}
+
+.updateCommunityIcon {
+  cursor: pointer;
+  color: white;
+  margin-left: auto;
 }
 
 .profile {
