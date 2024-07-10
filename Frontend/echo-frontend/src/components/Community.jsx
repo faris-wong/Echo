@@ -68,8 +68,6 @@ const Community = (props) => {
       ),
   });
 
-  
-
   const deleteMessage = useMutation({
     mutationFn: async (id) =>
       await usingFetch(
@@ -95,27 +93,27 @@ const Community = (props) => {
         {successful && <h1>{chicken.communityname}</h1>}
       </div>
       <div className={styles.msgContainer}>
-      
-      {isFetching && <h1>Loading...</h1>}
+        {isFetching && <h1>Loading...</h1>}
 
-      {isError && <div>{error.message}</div>}
+        {isError && <div>{error.message}</div>}
 
-      {isSuccess &&
-        data.map((item) => {
-          console.log(item);
-          return (
-            <MsgCard
-              key={item._id}
-              id={item._id}
-              profile={item.profilelink.username}
-              message={item.message}
-              timeStamp={item.timeStamp}
-              handleDelete={handleDelete}
-            />
-          );
-        })}
-        </div>
-        <div>
+        {isSuccess &&
+          data.map((item) => {
+            console.log(item);
+            return (
+              <MsgCard
+                key={item._id}
+                id={item._id}
+                profile={item.profilelink.username}
+                message={item.message}
+                timeStamp={item.timeStamp}
+                handleDelete={handleDelete}
+                status={item.profilelink.status}
+              />
+            );
+          })}
+      </div>
+      <div>
         <InputBox communityID={params.communityID} profile={frog} />
       </div>
     </>
