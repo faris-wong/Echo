@@ -3,8 +3,14 @@ import styles from "./css/InputBox.module.css";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import useFetchNT from "../hooks/useFetchNT";
+import MP3File from "../../public/whoosh.mp3";
 
 const InputBox = (props) => {
+  // sound file
+  const playWhoosh = () => {
+    const audio = new Audio(MP3File);
+    audio.play();
+  };
   const queryClient = useQueryClient();
   const usingFetch = useFetchNT();
   const [messageText, setMessageText] = useState("");
@@ -25,6 +31,7 @@ const InputBox = (props) => {
       setMessageText("");
       queryClient.invalidateQueries(["msgs"]);
       window.scrollTo(0, document.body.scrollHeight);
+      playWhoosh();
     },
   });
 
