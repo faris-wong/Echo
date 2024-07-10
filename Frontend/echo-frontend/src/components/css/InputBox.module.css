@@ -1,16 +1,14 @@
 .window {
   bottom: 0;
   margin: 10px;
-  width: 91%;
+  width: calc(98% - 210px); 
   position: fixed;
   z-index: 20;
+  left: 210px; 
+  right: 0;
 }
 
 .container {
-  height: auto;
-  /* left: 50%; */
-  /* transform: translate(-50%); */
-  width: 90%;
   background-color: rgb(27, 27, 27);
   border: 1px solid rgb(139, 89, 255);
   border-radius: 8px;
@@ -19,7 +17,7 @@
 }
 
 .container input {
-  width: 98%;
+  width: 96%;
   background: none;
   border: none;
   color: white;
