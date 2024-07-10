@@ -24,7 +24,12 @@ const ProfilePage = (props) => {
       ),
   });
 
-  const gamesList = data[0].games.split(",");
+  let gamesList = [];
+  if (data && data[0] && data[0].games !== undefined) {
+    gamesList = data[0].games.split(",");
+  } else {
+    gamesList = []; 
+  }
 
   return (
     <>
@@ -66,7 +71,7 @@ const ProfilePage = (props) => {
             <div>
               <ul>
                 {gamesList.map((game, index) => (
-                  <li key={index}>{game.trim()}</li> 
+                  <li key={index}>{game.trim()}</li>
                 ))}
               </ul>
             </div>
