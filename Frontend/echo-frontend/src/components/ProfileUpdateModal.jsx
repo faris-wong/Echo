@@ -75,7 +75,7 @@ const Overlay = (props) => {
             type="text"
             value={form.status}
             onChange={(e) =>
-              setForm((prev) => ({ ...prev, state: e.target.value }))
+              setForm((prev) => ({ ...prev, status: e.target.value }))
             }
           />
         </div>
