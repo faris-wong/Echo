@@ -16,6 +16,6 @@ router.get("/community", getAllCommunities);
 router.post("/community", getCommunityById);
 router.put("/community", authAdmin, createCommunity);
 router.delete("/community/:id", deleteCommunityById);
-router.patch("/community/:id", updateCommunityById);
+router.patch("/community/:id", authAdmin, updateCommunityById);
 
 module.exports = router;
