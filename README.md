@@ -9,7 +9,7 @@ ECHO is a community for gamers to chat about anything and everything related to 
 
 ## FEATURES
 ### Home (Newsfeed): Stay updated with the latest news and updates on new games.
-User Profiles: Create and curate your profile page to include games you have played or are currently playing. You can also add a bio about yourself and set your status as online or offline.
+### User Profiles: Create and curate your profile page to include games you have played or are currently playing. You can also add a bio about yourself and set your status as online or offline.
 ### Communities: Join and participate in various gaming communities.
 ### Admin Controls: Admins have the authority to create and update community names.
 
@@ -34,7 +34,7 @@ Add a bio about yourself and set your status as online or offline.
 ### Communities
 Join various gaming communities to discuss specific games or genres.
 Participate in community discussions, share your thoughts, and connect with fellow gamers.
-Admin Controls
+### Admin Controls
 Admins can create new community names and update existing ones.
 Admin controls ensure that the community remains organized and up-to-date.
 
