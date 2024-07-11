@@ -16,6 +16,6 @@ router.get("/message", getMessages);
 router.post("/messagebycommunity", getMessageByCommunity);
 router.put("/message", validateMessageData, checkErrors, createMessages);
 router.patch("/message", updateMessages);
-router.delete("/message", deleteMessages);
+router.delete("/message", authAdmin, deleteMessages);
 
 module.exports = router;

@@ -19,6 +19,6 @@ router.post("/profile", getProfileById);
 router.post("/profileaccount", getProfileByAccountLink);
 router.put("/profile/:id", createProfile);
 router.delete("/profile/:id", deleteProfileById);
-router.patch("/profile/:id", auth, authAdmin, updateProfileById);
+router.patch("/profile/:id", auth, updateProfileById);
 
 module.exports = router;
