@@ -62,7 +62,7 @@ const getMessageByCommunity = async (req, res) => {
 
   try {
     const allMessages = await MessagesModel.find(CommunityInfo)
-      .populate("profilelink", "username")
+      .populate("profilelink", "username status")
       .populate("communitylink", "communityname");
     res.json(allMessages);
   } catch (error) {

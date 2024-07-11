@@ -16,7 +16,7 @@ const ProfileSchema = new mongoose.Schema(
       require: true,
       default: "Online",
     },
-    games: { type: String, require: false },
+    games: { type: String, require: false, default: "" },
   },
   { collection: "profile" }
 );

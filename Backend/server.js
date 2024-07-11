@@ -15,7 +15,7 @@ const connectDB = require("./src/database/database");
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 1000,
+  max: 100000,
   standardHeaders: true,
   legacyHeaders: false,
 });
