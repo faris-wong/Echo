@@ -14,8 +14,8 @@ const { authAdmin, auth } = require("../middleware/auth");
 router.get("/seedcommunity", authAdmin, seedCommunity);
 router.get("/community", getAllCommunities);
 router.post("/community", getCommunityById);
-router.put("/community", authAdmin, createCommunity);
+router.put("/community", createCommunity);
 router.delete("/community/:id", deleteCommunityById);
-router.patch("/community/:id", authAdmin, updateCommunityById);
+router.patch("/community/:id",  updateCommunityById);
 
 module.exports = router;
