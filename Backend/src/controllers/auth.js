@@ -3,21 +3,21 @@ const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 
-// const getAllUsers = async (req, res) => {
-//   //
-//   try {
-//     const users = await AuthModel.find();
+const getAllUsers = async (req, res) => {
+  //
+  try {
+    const users = await AuthModel.find();
 
-//     const outputArray = [];
-//     for (const user of users) {
-//       outputArray.push({ email: user.email, role: user.role });
-//     }
-//     res.json(outputArray);
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(400).json({ status: "error", msg: "error getting users" });
-//   }
-// };
+    const outputArray = [];
+    for (const user of users) {
+      outputArray.push({ email: user.email, role: user.role });
+    }
+    res.json(outputArray);
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({ status: "error", msg: "error getting users" });
+  }
+};
 
 const register = async (req, res) => {
   try {
@@ -80,7 +80,7 @@ const login = async (req, res) => {
       jwtid: uuidv4(),
     });
 
-    res.json({id: auth._id, access, refresh });
+    res.json({ id: auth._id, access, refresh });
   } catch (error) {
     console.error(error.message);
     res.json({ status: "error", msg: "unable to login" });
@@ -107,4 +107,4 @@ const refresh = async (req, res) => {
   }
 };
 
-module.exports = { register, login, refresh };
+module.exports = { register, login, refresh, getAllUsers };
