@@ -10,6 +10,7 @@ const {
 
 const { validateMessageData } = require("../validators/messages");
 const checkErrors = require("../validators/checkErrors");
+const { authAdmin, auth } = require("../middleware/auth");
 
 router.get("/message", getMessages);
 router.post("/messagebycommunity", getMessageByCommunity);

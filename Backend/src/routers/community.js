@@ -9,10 +9,12 @@ const {
   updateCommunityById,
 } = require("../controllers/community");
 
-router.get("/seedcommunity", seedCommunity);
+const { authAdmin, auth } = require("../middleware/auth");
+
+router.get("/seedcommunity", authAdmin, seedCommunity);
 router.get("/community", getAllCommunities);
 router.post("/community", getCommunityById);
-router.put("/community", createCommunity);
+router.put("/community", authAdmin, createCommunity);
 router.delete("/community/:id", deleteCommunityById);
 router.patch("/community/:id", updateCommunityById);
 

@@ -13,19 +13,10 @@ const checkErrors = require("../validators/checkErrors");
 const { authAdmin, auth } = require("../middleware/auth");
 
 router.get("/users", authAdmin);
-router.put(
-  "/register",
-  authAdmin,
-  auth,
-  validateRegistrationData,
-  checkErrors,
-  register
-);
-router.post("/login", authAdmin, auth, validateLoginData, checkErrors, login);
+router.put("/register", validateRegistrationData, checkErrors, register);
+router.post("/login", validateLoginData, checkErrors, login);
 router.post(
   "/refresh",
-  auth,
-  authAdmin,
   validateRefreshToken,
   checkErrors,
   refresh

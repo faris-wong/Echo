@@ -21,6 +21,7 @@ const Overlay = (props) => {
             genre: genre,
             information: information,
           }),
+          
         }
       );
       console.log(response);
