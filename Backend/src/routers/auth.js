@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const {
-  register,
-  login,
-  refresh,
-} = require("../controllers/auth");
+const { register, login, refresh } = require("../controllers/auth");
 
 const {
   validateLoginData,
@@ -14,11 +10,25 @@ const {
 } = require("../validators/auth");
 
 const checkErrors = require("../validators/checkErrors");
-const { authAdmin } = require("../middleware/auth");
+const { authAdmin, auth } = require("../middleware/auth");
 
 router.get("/users", authAdmin);
-router.put("/register", validateRegistrationData, checkErrors, register);
-router.post("/login", validateLoginData, checkErrors, login);
-router.post("/refresh", validateRefreshToken, checkErrors, refresh);
+router.put(
+  "/register",
+  authAdmin,
+  auth,
+  validateRegistrationData,
+  checkErrors,
+  register
+);
+router.post("/login", authAdmin, auth, validateLoginData, checkErrors, login);
+router.post(
+  "/refresh",
+  auth,
+  authAdmin,
+  validateRefreshToken,
+  checkErrors,
+  refresh
+);
 
 module.exports = router;
