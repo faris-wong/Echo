@@ -49,6 +49,20 @@ Admin controls ensure that the community remains organized and up-to-date.
 ### Frontend
 - VITE_SERVER
 
+## Planning
+### Wireframe - Main page
+<img width="1440" alt="Wireframe-mainpage" src="https://github.com/user-attachments/assets/7103e7be-2f49-4e22-8db0-ea7c549f677e">
+
+### Wireframe - Community chatroom
+<img width="1440" alt="Wireframe - community chatroom" src="https://github.com/user-attachments/assets/b888ca40-c192-4783-a6d8-b409af485af4">
+
+### Wireframe - Login/Register
+<img width="1440" alt="User Login" src="https://github.com/user-attachments/assets/9d4155e7-6bb6-443b-beb4-8d25a261ad78">
+
+### Wireframe Profile page
+<img width="1440" alt="Wireframe - user login" src="https://github.com/user-attachments/assets/5d666dba-1da6-4728-8721-fa4f34f50279">
+
+
 ## Images of Application
 ### Landing Page
 <img width="1440" alt="Landing Page - ECHO" src="https://github.com/faris-wong/Echo/assets/163378473/fbafa807-363d-4e75-8859-057a3301994d">
